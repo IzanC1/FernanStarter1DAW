@@ -4,14 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //Referido a los datos de los trabajadores
-        final String admin = "Administrador";
-        final String passAdmin = "Admin1234";
-        final String gestor = "Gestor";
-        final String passGestor = "Gestor1234";
-        final String inversor1 = "Inversor1";
-        final String passInversor1 = "Inversor1234";
-        final String inversor2 = "Inversor2";
-        final String passInversor2 = "Inversor5678";
+        final String admin = "administrador";
+        final String passAdmin = "administrador";
+        final String gestor = "gestor";
+        final String passGestor = "gestor";
+        final String inversor1 = "inversor1";
+        final String passInversor1 = "inversor1";
+        final String inversor2 = "inversor2";
+        final String passInversor2 = "inversor2";
+
         //Referido a los bloqueos
         int intentosGestor=0;
         int intentosInversor1=0;
@@ -20,6 +21,7 @@ public class Main {
         boolean bloqueadoInversor1 = false;
         boolean bloqueadoInversor2 = false;
         int opcionDesbloqueo;
+
         //Referido al control de acceso
         boolean esAdmin = false;
         boolean salir = false;
@@ -60,11 +62,12 @@ public class Main {
         String recompensa2Proyecto3 = "";
         String recompensa3Proyecto3 = "";
         int totalProyectos = 0;
+
         while (!acceso) {
             System.out.println("Introduce el usuario:");
-            String usuario = sc.nextLine();
+            String usuario = sc.nextLine().toLowerCase().trim();
             System.out.println("Introduce la contraseña:");
-            String contrasena = sc.nextLine();
+            String contrasena = sc.nextLine().toLowerCase().trim();
 
             if (usuario.equals(gestor)) {
                 if (bloqueadoGestor) {
