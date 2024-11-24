@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        // Datos de los usuarios
         final String admin = "administrador";
         final String passAdmin = "administrador";
         final String gestor = "gestor";
@@ -13,6 +14,7 @@ public class Main {
         final String inversor2 = "inversor2";
         final String passInversor2 = "inversor2";
 
+        // Variables de los bloqueos
         int intentosGestor = 3;
         int intentosInversor1 = 3;
         int intentosInversor2 = 3;
@@ -21,8 +23,9 @@ public class Main {
         boolean bloqueadoInversor1 = false;
         boolean bloqueadoInversor2 = false;
 
+        // Control de acceso
         while (true) {
-            System.out.println("Introduce el usuario (o escribe 'salir' para terminar):");
+            System.out.println("\nIntroduce el usuario (o escribe 'salir' para terminar):");
             String usuario = sc.nextLine().toLowerCase().trim();
 
             if (usuario.equals("salir")) {
@@ -43,6 +46,7 @@ public class Main {
                         System.out.println("Has accedido como Gestor.");
                         intentosGestor = 3;
 
+                        // AQUÍ EMPIEZA EL MENÚ GESTOR
                         while (true) {
                             System.out.println("\n--- Menú Gestor ---");
                             System.out.println("1. Opción Gestor");
@@ -61,7 +65,8 @@ public class Main {
                             } else {
                                 System.out.println("Opción inválida.");
                             }
-                        }
+                        } // AQUÍ ACABA EL MENÚ GESTOR
+
                         break;
                     } else {
                         intentosGestor--;
@@ -86,6 +91,7 @@ public class Main {
                         System.out.println("Has accedido como Inversor1.");
                         intentosInversor1 = 3;
 
+                        // AQUÍ EMPIEZA EL MENÚ INVERSOR 1
                         while (true) {
                             System.out.println("\n--- Menú Inversor1 ---");
                             System.out.println("1. Opción Inversor1");
@@ -104,7 +110,8 @@ public class Main {
                             } else {
                                 System.out.println("Opción inválida.");
                             }
-                        }
+                        } // AQUÍ ACABA EL MENÚ INVERSOR 1
+
                         break;
                     } else {
                         intentosInversor1--;
@@ -129,6 +136,7 @@ public class Main {
                         System.out.println("Has accedido como Inversor2.");
                         intentosInversor2 = 3;
 
+                        // AQUÍ EMPIEZA EL MENÚ INVERSOR 2
                         while (true) {
                             System.out.println("\n--- Menú Inversor2 ---");
                             System.out.println("1. Opción Inversor2");
@@ -147,7 +155,8 @@ public class Main {
                             } else {
                                 System.out.println("Opción inválida.");
                             }
-                        }
+                        } // AQUÍ ACABA EL MENÚ INVERSOR 2
+
                         break;
                     } else {
                         intentosInversor2--;
@@ -160,43 +169,37 @@ public class Main {
                 }
 
             } else if (usuario.equals(admin)) {
-                boolean adminAccedido = false;
                 while (true) {
                     System.out.println("Introduce la contraseña:");
                     String contrasena = sc.nextLine().toLowerCase().trim();
 
                     if (contrasena.equals(passAdmin)) {
                         System.out.println("Has accedido como Administrador.");
-                        adminAccedido = true;
+
+                        // AQUÍ EMPIEZA EL MENÚ ADMINISTRADOR
+                        while (true) {
+                            System.out.println("\n--- Menú Administrador ---");
+                            System.out.println("1. Opción Administrador");
+                            System.out.println("2. Opción Administrador");
+                            System.out.println("3. Salir");
+                            System.out.print("Selecciona una opción: ");
+                            int opcion = sc.nextInt();
+                            sc.nextLine();
+
+                            if (opcion == 1) {
+                                System.out.println("Realizando opción Administrador 1...");
+                            } else if (opcion == 2) {
+                                System.out.println("Realizando opción Administrador 2...");
+                            } else if (opcion == 3) {
+                                break;
+                            } else {
+                                System.out.println("Opción inválida.");
+                            }
+                        } // AQUÍ ACABA EL MENÚ ADMINISTRADOR
+
                         break;
                     } else {
-                        System.out.println("Contraseña incorrecta. Escribe 'salir' para abandonar o intenta nuevamente.");
-                        String opcion = sc.nextLine().toLowerCase().trim();
-                        if (opcion.equals("salir")) {
-                            break;
-                        }
-                    }
-                }
-
-                if (adminAccedido) {
-                    while (true) {
-                        System.out.println("\n--- Menú Administrador ---");
-                        System.out.println("1. Opción Administrador");
-                        System.out.println("2. Opción Administrador");
-                        System.out.println("3. Salir");
-                        System.out.print("Selecciona una opción: ");
-                        int opcion = sc.nextInt();
-                        sc.nextLine();
-
-                        if (opcion == 1) {
-                            System.out.println("Realizando opción Administrador 1...");
-                        } else if (opcion == 2) {
-                            System.out.println("Realizando opción Administrador 2...");
-                        } else if (opcion == 3) {
-                            break;
-                        } else {
-                            System.out.println("Opción inválida.");
-                        }
+                        System.out.println("Contraseña incorrecta.");
                     }
                 }
 
