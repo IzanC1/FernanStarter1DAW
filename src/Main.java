@@ -27,6 +27,112 @@ public class Main {
         boolean salir = false;
         boolean acceso = false;
         boolean esGestor = false;
+
+        while (!acceso) {
+            System.out.println("Introduce el usuario:");
+            String usuario = sc.nextLine().toLowerCase().trim();
+
+            int intentosRestantes = 3;
+
+            switch (usuario) {
+                case gestor:
+                    if (bloqueadoGestor) {
+                        System.out.println("La cuenta del Gestor está bloqueada. Contacte con el administrador.");
+                        break;
+                    }
+                    while (intentosRestantes > 0) {
+                        System.out.println("Introduce la contraseña:");
+                        String contrasena = sc.nextLine().toLowerCase().trim();
+
+                        if (contrasena.equals(passGestor)) {
+                            System.out.println("Has accedido como Gestor.");
+                            acceso = true;
+                            esGestor = true;
+                            intentosGestor = 0;
+                            break;
+                        } else {
+                            intentosRestantes--;
+                            System.out.println("Contraseña incorrecta. Te quedan " + intentosRestantes + " intentos.");
+                            if (intentosRestantes == 0) {
+                                bloqueadoGestor = true;
+                                System.out.println("La cuenta del Gestor ha sido bloqueada.");
+                            }
+                        }
+                    }
+                    break;
+
+                case inversor1:
+                    if (bloqueadoInversor1) {
+                        System.out.println("La cuenta del Inversor1 está bloqueada. Contacte con el administrador.");
+                        break;
+                    }
+                    while (intentosRestantes > 0) {
+                        System.out.println("Introduce la contraseña:");
+                        String contrasena = sc.nextLine().toLowerCase().trim();
+
+                        if (contrasena.equals(passInversor1)) {
+                            System.out.println("Has accedido como Inversor1.");
+                            acceso = true;
+                            intentosInversor1 = 0;
+                            break;
+                        } else {
+                            intentosRestantes--;
+                            System.out.println("Contraseña incorrecta. Te quedan " + intentosRestantes + " intentos.");
+                            if (intentosRestantes == 0) {
+                                bloqueadoInversor1 = true;
+                                System.out.println("La cuenta del Inversor1 ha sido bloqueada.");
+                            }
+                        }
+                    }
+                    break;
+
+                case inversor2:
+                    if (bloqueadoInversor2) {
+                        System.out.println("La cuenta del Inversor2 está bloqueada. Contacte con el administrador.");
+                        break;
+                    }
+                    while (intentosRestantes > 0) {
+                        System.out.println("Introduce la contraseña:");
+                        String contrasena = sc.nextLine().toLowerCase().trim();
+
+                        if (contrasena.equals(passInversor2)) {
+                            System.out.println("Has accedido como Inversor2.");
+                            acceso = true;
+                            intentosInversor2 = 0;
+                            break;
+                        } else {
+                            intentosRestantes--;
+                            System.out.println("Contraseña incorrecta. Te quedan " + intentosRestantes + " intentos.");
+                            if (intentosRestantes == 0) {
+                                bloqueadoInversor2 = true;
+                                System.out.println("La cuenta del Inversor2 ha sido bloqueada.");
+                            }
+                        }
+                    }
+                    break;
+
+                case admin:
+                    while (true) {
+                        System.out.println("Introduce la contraseña:");
+                        String contrasena = sc.nextLine().toLowerCase().trim();
+
+                        if (contrasena.equals(passAdmin)) {
+                            System.out.println("Has accedido como Administrador.");
+                            acceso = true;
+                            esAdmin = true;
+                            break;
+                        } else {
+                            System.out.println("Contraseña incorrecta.");
+                        }
+                    }
+                    break;
+
+                default:
+                    System.out.println("Usuario no reconocido.");
+                    break;
+            }
+        }
+
         //Proyectos:
         //PROYECTO 1
         String nombreProyecto1 = "";
@@ -62,71 +168,6 @@ public class Main {
         String recompensa2Proyecto3 = "";
         String recompensa3Proyecto3 = "";
         int totalProyectos = 0;
-
-        while (!acceso) {
-            System.out.println("Introduce el usuario:");
-            String usuario = sc.nextLine().toLowerCase().trim();
-            System.out.println("Introduce la contraseña:");
-            String contrasena = sc.nextLine().toLowerCase().trim();
-
-            if (usuario.equals(gestor)) {
-                if (bloqueadoGestor) {
-                    System.out.println("La cuenta del Gestor está bloqueada. Contacte con el administrador.");
-                } else if (contrasena.equals(passGestor)) {
-                    System.out.println("Has accedido como Gestor.");
-                    acceso = true;
-                    esGestor = true;
-                    intentosGestor = 0;
-                } else {
-                    intentosGestor++;
-                    System.out.println("Contraseña incorrecta.");
-                    if (intentosGestor >= 3) {
-                        bloqueadoGestor = true;
-                        System.out.println("La cuenta del Gestor ha sido bloqueada.");
-                    }
-                }
-            } else if (usuario.equals(inversor1)) {
-                if (bloqueadoInversor1) {
-                    System.out.println("La cuenta del Inversor1 está bloqueada. Contacte con el administrador.");
-                } else if (contrasena.equals(passInversor1)) {
-                    System.out.println("Has accedido como Inversor1.");
-                    acceso = true;
-                    intentosInversor1 = 0;
-                } else {
-                    intentosInversor1++;
-                    System.out.println("Contraseña incorrecta.");
-                    if (intentosInversor1 >= 3) {
-                        bloqueadoInversor1 = true;
-                        System.out.println("La cuenta del Inversor1 ha sido bloqueada.");
-                    }
-                }
-            } else if (usuario.equals(inversor2)) {
-                if (bloqueadoInversor2) {
-                    System.out.println("La cuenta del Inversor2 está bloqueada. Contacte con el administrador.");
-                } else if (contrasena.equals(passInversor2)) {
-                    System.out.println("Has accedido como Inversor2.");
-                    acceso = true;
-                    intentosInversor2 = 0;
-                } else {
-                    intentosInversor2++;
-                    System.out.println("Contraseña incorrecta.");
-                    if (intentosInversor2 >= 3) {
-                        bloqueadoInversor2 = true;
-                        System.out.println("La cuenta del Inversor2 ha sido bloqueada.");
-                    }
-                }
-            } else if (usuario.equals(admin)) {
-                if (contrasena.equals(passAdmin)) {
-                    System.out.println("Has accedido como Administrador.");
-                    acceso = true;
-                    esAdmin = true;
-                } else {
-                    System.out.println("Contraseña incorrecta.");
-                }
-            } else {
-                System.out.println("Usuario no reconocido.");
-            }
-        }
 
         while (!salir) {
             System.out.println("\n---- Menú Principal ----");
