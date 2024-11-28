@@ -274,8 +274,9 @@ public class Main {
                             } else {
                                 System.out.println("Opcion inválida. Por favor, selecciona una opcion válida.");
                             }
-                        } // AQUÍ ACABA EL MENÚ GESTOR
 
+                        } // AQUÍ ACABA EL MENÚ GESTOR
+                        break;
                     } else {
                         intentosGestor--;
                         System.out.println("Contraseña incorrecta. Te quedan " + intentosGestor + " intentos.");
@@ -387,7 +388,7 @@ public class Main {
                         // AQUÍ EMPIEZA EL MENÚ ADMINISTRADOR
                         while (true) {
                             System.out.println("\n--- Menú Administrador ---");
-                            System.out.println("1. Opción Administrador");
+                            System.out.println("1. Panel de control");
                             System.out.println("2. Opción Administrador");
                             System.out.println("3. Salir");
                             System.out.print("Selecciona una opción: ");
@@ -395,7 +396,82 @@ public class Main {
                             sc.nextLine();
 
                             if (opcion == 1) {
-                                System.out.println("Realizando opción Administrador 1...");
+
+                                int opcionPanelControl = 0;
+                                do {
+                                    System.out.println("\n--- Panel de Control ---");
+                                    System.out.println("1. Bloquear usuario");
+                                    System.out.println("2. Desbloquear usuario");
+                                    opcionPanelControl = sc.nextInt();
+                                    sc.nextLine();
+                                }while(opcionPanelControl != 1 && opcionPanelControl != 2);
+                                switch (opcionPanelControl) {
+                                    case 1:
+                                        int opcionBloqueo = 0;
+                                        do {
+                                            System.out.println("\n¿A qué usuario bloquear?");
+                                            System.out.println("1. Usuario Inversor 1");
+                                            System.out.println("2. Usuario Inversor 2");
+                                            System.out.println("3. Usuario Gestor");
+                                            System.out.println("4. Volver al Menú Administrador");
+                                            opcionBloqueo = sc.nextInt();
+                                            sc.nextLine();
+                                        } while (opcionBloqueo != 1 && opcionBloqueo != 2 && opcionBloqueo != 3 && opcionBloqueo != 4);
+                                        switch (opcionBloqueo) {
+                                            case 1:
+                                                bloqueadoInversor1 = true;
+                                                intentosInversor1 = 0;
+                                                System.out.println("Has bloqueado al Inversor 1 correctamente");
+                                                break;
+                                            case 2:
+                                                bloqueadoInversor2 = true;
+                                                intentosInversor2 = 0;
+                                                System.out.println("Has bloqueado al Inversor 2 correctamente");
+                                                break;
+                                            case 3:
+                                                bloqueadoGestor = true;
+                                                intentosGestor = 0;
+                                                System.out.println("Has bloqueado al Gestor correctamente");
+                                                break;
+                                            case 4:
+                                                break;
+                                        }
+                                        break;
+                                    case 2:
+                                        int opcionDesbloqueo = 0;
+                                        do {
+                                            System.out.println("\n¿A qué usuario desbloquear?");
+                                            System.out.println("1. Usuario Inversor 1");
+                                            System.out.println("2. Usuario Inversor 2");
+                                            System.out.println("3. Usuario Gestor");
+                                            System.out.println("4. Volver al Menú Administrador");
+                                            opcionDesbloqueo = sc.nextInt();
+                                            sc.nextLine();
+                                        } while (opcionDesbloqueo != 1 && opcionDesbloqueo != 2 && opcionDesbloqueo != 3 && opcionDesbloqueo != 4);
+                                        switch (opcionDesbloqueo) {
+                                            case 1:
+                                                bloqueadoInversor1 = false;
+                                                intentosInversor1 = 3;
+                                                System.out.println("Has desbloqueado al Inversor 1 correctamente");
+                                                break;
+                                            case 2:
+                                                bloqueadoInversor2 = false;
+                                                intentosInversor2 = 3;
+                                                System.out.println("Has desbloqueado al Inversor 2 correctamente");
+                                                break;
+                                            case 3:
+                                                bloqueadoGestor = false;
+                                                intentosGestor = 3;
+                                                System.out.println("Has desbloqueado al Gestor correctamente");
+                                                break;
+                                            case 4:
+                                                break;
+                                        }
+                                        break;
+                                }
+
+
+
                             } else if (opcion == 2) {
                                 System.out.println("Realizando opción Administrador 2...");
                             } else if (opcion == 3) {
