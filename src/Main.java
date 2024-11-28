@@ -5,14 +5,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         // Datos de los usuarios
-        final String admin = "administrador";
-        final String passAdmin = "administrador";
-        final String gestor = "gestor";
-        final String passGestor = "gestor";
-        final String inversor1 = "inversor1";
-        final String passInversor1 = "inversor1";
-        final String inversor2 = "inversor2";
-        final String passInversor2 = "inversor2";
+        String admin = "administrador";
+        String passAdmin = "administrador";
+        String gestor = "gestor";
+        String passGestor = "gestor";
+        String inversor1 = "inversor1";
+        String passInversor1 = "inversor1";
+        String inversor2 = "inversor2";
+        String passInversor2 = "inversor2";
 
         // Variables de los bloqueos
         int intentosGestor = 3;
@@ -88,7 +88,8 @@ public class Main {
                             System.out.println("1. Mostrar todos los proyectos de la plataforma");
                             System.out.println("2. Crear un nuevo proyecto");
                             System.out.println("3. Modificar un proyecto existente");
-                            System.out.println("4. Salir");
+                            System.out.println("4. Configuración");
+                            System.out.println("5. Cerrar Sesión");
                             System.out.print("Selecciona una opción: ");
                             int opcion = sc.nextInt();
                             sc.nextLine();
@@ -269,6 +270,30 @@ public class Main {
 
                                 System.out.println("Proyecto modificado con éxito.");
                             } else if (opcion == 4) {
+                                System.out.println("\nConfiguración de la cuenta: ");
+                                System.out.println("¿Que opción desea?");
+                                System.out.println("1. Cambiar nombre de usuario");
+                                System.out.println("2. Cambiar contraseña");
+                                System.out.println("3. Volver");
+                                int opcionUsuarioPassword = sc.nextInt();
+                                sc.nextLine();
+                                if (opcionUsuarioPassword == 1){
+                                    System.out.println("Ingrese su nuevo nombre de usuario");
+                                    String nuevoGestor = sc.nextLine();
+                                    gestor = nuevoGestor;
+                                    System.out.println("Has reestablecido su nombre de usuario");
+                                }
+                                if (opcionUsuarioPassword == 2){
+                                    System.out.println("Ingrese la nueva contraseña");
+                                    String nuevapassGestor = sc.nextLine();
+                                    passGestor = nuevapassGestor;
+                                    System.out.println("Has reestablecido su contraseña");
+                                }
+                                if (opcionUsuarioPassword == 3){
+                                    System.out.println("Volviendo...");
+                                    break;
+                                }
+                            } else if (opcion == 5) {
                                 System.out.println("Saliendo del menú Gestor...");
                                 break;
                             } else {
