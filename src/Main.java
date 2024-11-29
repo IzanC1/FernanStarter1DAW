@@ -414,8 +414,9 @@ public class Main {
                         while (true) {
                             System.out.println("\n--- Menú Administrador ---");
                             System.out.println("1. Panel de control");
-                            System.out.println("2. Opción Administrador");
-                            System.out.println("3. Salir");
+                            System.out.println("2. Proyectos");
+                            System.out.println("3. Configuración");
+                            System.out.println("4. Cerrar sesión");
                             System.out.print("Selecciona una opción: ");
                             int opcion = sc.nextInt();
                             sc.nextLine();
@@ -495,17 +496,106 @@ public class Main {
                                         break;
                                 }
 
-
-
                             } else if (opcion == 2) {
-                                System.out.println("Realizando opción Administrador 2...");
+                                System.out.println("\n--- Proyectos ---");
+                                System.out.println("Modificando un proyecto...");
+                                System.out.println("Selecciona el numero del proyecto a modificar (1, 2 o 3): ");
+                                int numProyecto = sc.nextInt();
+                                sc.nextLine();
+                                if (numProyecto < 1 || numProyecto > proyectosCreados){
+                                    System.out.println("Proyecto no válido.");
+                                    continue;
+                                }
+                                System.out.print("Introduce el nuevo nombre del proyecto: ");
+                                String nuevoNombre = sc.nextLine();
+                                System.out.print("Introduce la nueva descripción del proyecto: ");
+                                String nuevaDescripcion = sc.nextLine();
+                                System.out.print("Introduce la nueva categoría del proyecto: ");
+                                String nuevaCategoria = sc.nextLine();
+                                System.out.print("Introduce la nueva cantidad necesaria: ");
+                                double nuevaCantidadNecesaria = sc.nextDouble();
+                                sc.nextLine();
+                                System.out.print("Introduce la nueva cantidad financiada: ");
+                                double nuevaCantidadFinanciada = sc.nextDouble();
+                                sc.nextLine();
+                                System.out.print("Introduce la nueva fecha de inicio (formato DD/MM/AAAA): ");
+                                String nuevaFechaInicio = sc.nextLine();
+                                System.out.print("Introduce la nueva fecha de fin (formato DD/MM/AAAA): ");
+                                String nuevaFechaFin = sc.nextLine();
+                                System.out.println("Introduce las nuevas recompensas:");
+                                System.out.print("Recompensa 1: ");
+                                String nuevaRecompensa1 = sc.nextLine();
+                                System.out.print("Recompensa 2: ");
+                                String nuevaRecompensa2 = sc.nextLine();
+                                System.out.print("Recompensa 3: ");
+                                String nuevaRecompensa3 = sc.nextLine();
+
+                                if (numProyecto == 1){
+                                    nombreProyecto1 = nuevoNombre;
+                                    descripcionProyecto1 = nuevaDescripcion;
+                                    categoriaProyecto1 = nuevaCategoria;
+                                    cantidadNecesaria1 = nuevaCantidadNecesaria;
+                                    cantidadFinanciada1 = nuevaCantidadFinanciada;
+                                    fechaInicio1 = nuevaFechaInicio;
+                                    fechaFin1 = nuevaFechaFin;
+                                    recompensa1_1 = nuevaRecompensa1;
+                                    recompensa1_2 = nuevaRecompensa2;
+                                    recompensa1_3 = nuevaRecompensa3;
+                                } else if (numProyecto == 2) {
+                                    nombreProyecto2 = nuevoNombre;
+                                    descripcionProyecto2 = nuevaDescripcion;
+                                    categoriaProyecto2 = nuevaCategoria;
+                                    cantidadNecesaria2 = nuevaCantidadNecesaria;
+                                    cantidadFinanciada2 = nuevaCantidadFinanciada;
+                                    fechaInicio2 = nuevaFechaInicio;
+                                    fechaFin2 = nuevaFechaFin;
+                                    recompensa2_1 = nuevaRecompensa1;
+                                    recompensa2_2 = nuevaRecompensa2;
+                                    recompensa2_3 = nuevaRecompensa3;
+                                } else if (numProyecto == 3) {
+                                    nombreProyecto3 = nuevoNombre;
+                                    descripcionProyecto3 = nuevaDescripcion;
+                                    categoriaProyecto3 = nuevaCategoria;
+                                    cantidadNecesaria3 = nuevaCantidadNecesaria;
+                                    cantidadFinanciada3 = nuevaCantidadFinanciada;
+                                    fechaInicio3 = nuevaFechaInicio;
+                                    fechaFin3 = nuevaFechaFin;
+                                    recompensa3_1 = nuevaRecompensa1;
+                                    recompensa3_2 = nuevaRecompensa2;
+                                    recompensa3_3 = nuevaRecompensa3;
+                                }
+                                System.out.println("Proyecto modificado con éxito.");
+
                             } else if (opcion == 3) {
+                                System.out.println("\n--- Configuración ---");
+                                System.out.println("¿Que opción desea?");
+                                System.out.println("1. Cambiar nombre de usuario");
+                                System.out.println("2. Cambiar contraseña");
+                                System.out.println("3. Volver");
+                                int opcionAdminPassword = sc.nextInt();
+                                sc.nextLine();
+                                if (opcionAdminPassword == 1){
+                                    System.out.println("Ingrese su nuevo nombre de usuario");
+                                    String nuevoAdmin = sc.nextLine();
+                                    admin = nuevoAdmin;
+                                    System.out.println("Has reestablecido su nombre de usuario");
+                                }
+                                if (opcionAdminPassword == 2){
+                                    System.out.println("Ingrese la nueva contraseña");
+                                    String nuevapassAdmin = sc.nextLine();
+                                    passAdmin = nuevapassAdmin;
+                                    System.out.println("Has reestablecido su contraseña");
+                                }
+                                if (opcionAdminPassword == 3){
+                                    System.out.println("Volviendo...");
+                                    break;
+                                }
+                            } else if (opcion == 4) {
                                 break;
                             } else {
                                 System.out.println("Opción inválida.");
                             }
                         } // AQUÍ ACABA EL MENÚ ADMINISTRADOR
-
                         break;
                     } else {
                         System.out.println("Contraseña incorrecta.");
