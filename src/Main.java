@@ -109,7 +109,20 @@ public class Main {
                                     System.out.println("Fecha de inicio: " + fechaInicio1);
                                     System.out.println("Fecha de fin: " + fechaFin1);
                                     System.out.println("Recompensas: " + recompensa1_1 + ", " + recompensa1_2 + ", " + recompensa1_3);
+                                    // BARRA DE PROGRESO PROYECTO 1
+                                    int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1)*100);
+                                    System.out.print("\033[35m[");
+                                    for (int i=0; i<=100; i++){
+                                        if (i<=porcentaje){
+                                            System.out.print("\u25A0");
+                                        }else{
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el "+porcentaje+"%");
                                 }
+
                                 if (proyectosCreados >= 2){
                                     System.out.println("\nProyecto 2:");
                                     System.out.println("Nombre: " + nombreProyecto2);
@@ -120,7 +133,20 @@ public class Main {
                                     System.out.println("Fecha de inicio: " + fechaInicio2);
                                     System.out.println("Fecha de fin: " + fechaFin2);
                                     System.out.println("Recompensas: " + recompensa2_1 + ", " + recompensa2_2 + ", " + recompensa2_3);
+                                    // BARRA DE PROGRESO PROYECTO 2
+                                    int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2)*100);
+                                    System.out.print("\033[35m[");
+                                    for (int i=0; i<=100; i++){
+                                        if (i<=porcentaje){
+                                            System.out.print("\u25A0");
+                                        }else{
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el "+porcentaje+"%");
                                 }
+
                                 if (proyectosCreados >= 3){
                                     System.out.println("\nProyecto 3:");
                                     System.out.println("Nombre: " + nombreProyecto3);
@@ -131,7 +157,20 @@ public class Main {
                                     System.out.println("Fecha de inicio: " + fechaInicio3);
                                     System.out.println("Fecha de fin: " + fechaFin3);
                                     System.out.println("Recompensas: " + recompensa3_1 + ", " + recompensa3_2 + ", " + recompensa3_3);
+                                    // BARRA DE PROGRESO PROYECTO 3
+                                    int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3)*100);
+                                    System.out.print("\033[35m[");
+                                    for (int i=0; i<=100; i++){
+                                        if (i<=porcentaje){
+                                            System.out.print("\u25A0");
+                                        }else{
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el "+porcentaje+"%");
                                 }
+
                             } else if (opcion == 2) {
                                 if (proyectosCreados >= 3){
                                     System.out.println("No se pueden crear mas proyectos. El limite son 3.");
@@ -414,15 +453,15 @@ public class Main {
                         while (true) {
                             System.out.println("\n--- Menú Administrador ---");
                             System.out.println("1. Panel de control");
-                            System.out.println("2. Proyectos");
-                            System.out.println("3. Configuración");
-                            System.out.println("4. Cerrar sesión");
+                            System.out.println("2. Mostrar todos los proyectos de la plataforma");
+                            System.out.println("3. Modificar un proyecto existente");
+                            System.out.println("4. Configuración");
+                            System.out.println("5. Cerrar sesión");
                             System.out.print("Selecciona una opción: ");
                             int opcion = sc.nextInt();
                             sc.nextLine();
 
                             if (opcion == 1) {
-
                                 int opcionPanelControl = 0;
                                 do {
                                     System.out.println("\n--- Panel de Control ---");
@@ -498,7 +537,83 @@ public class Main {
 
                             } else if (opcion == 2) {
                                 System.out.println("\n--- Proyectos ---");
-                                System.out.println("Modificando un proyecto...");
+                                if (proyectosCreados == 0) {
+                                    System.out.println("No hay proyectos creados aun");
+                                }
+                                if (proyectosCreados >= 1) {
+                                    System.out.println("\nProyecto 1: ");
+                                    System.out.println("Nombre: " + nombreProyecto1);
+                                    System.out.println("Descripción: " + descripcionProyecto1);
+                                    System.out.println("Categoría: " + categoriaProyecto1);
+                                    System.out.println("Cantidad necesaria: " + cantidadNecesaria1);
+                                    System.out.println("Cantidad financiada: " + cantidadFinanciada1);
+                                    System.out.println("Fecha de inicio: " + fechaInicio1);
+                                    System.out.println("Fecha de fin: " + fechaFin1);
+                                    System.out.println("Recompensas: " + recompensa1_1 + ", " + recompensa1_2 + ", " + recompensa1_3);
+                                    // BARRA DE PROGRESO PROYECTO 1
+                                    int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1) * 100);
+                                    System.out.print("\033[35m[");
+                                    for (int i = 0; i <= 100; i++) {
+                                        if (i <= porcentaje) {
+                                            System.out.print("\u25A0");
+                                        } else {
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+                                }
+
+                                if (proyectosCreados >= 2) {
+                                    System.out.println("\nProyecto 2:");
+                                    System.out.println("Nombre: " + nombreProyecto2);
+                                    System.out.println("Descripción: " + descripcionProyecto2);
+                                    System.out.println("Categoría: " + categoriaProyecto2);
+                                    System.out.println("Cantidad necesaria: " + cantidadNecesaria2);
+                                    System.out.println("Cantidad financiada: " + cantidadFinanciada2);
+                                    System.out.println("Fecha de inicio: " + fechaInicio2);
+                                    System.out.println("Fecha de fin: " + fechaFin2);
+                                    System.out.println("Recompensas: " + recompensa2_1 + ", " + recompensa2_2 + ", " + recompensa2_3);
+                                    // BARRA DE PROGRESO PROYECTO 2
+                                    int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2) * 100);
+                                    System.out.print("\033[35m[");
+                                    for (int i = 0; i <= 100; i++) {
+                                        if (i <= porcentaje) {
+                                            System.out.print("\u25A0");
+                                        } else {
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+                                }
+
+                                if (proyectosCreados >= 3) {
+                                    System.out.println("\nProyecto 3:");
+                                    System.out.println("Nombre: " + nombreProyecto3);
+                                    System.out.println("Descripción: " + descripcionProyecto3);
+                                    System.out.println("Categoría: " + categoriaProyecto3);
+                                    System.out.println("Cantidad necesaria: " + cantidadNecesaria3);
+                                    System.out.println("Cantidad financiada: " + cantidadFinanciada3);
+                                    System.out.println("Fecha de inicio: " + fechaInicio3);
+                                    System.out.println("Fecha de fin: " + fechaFin3);
+                                    System.out.println("Recompensas: " + recompensa3_1 + ", " + recompensa3_2 + ", " + recompensa3_3);
+                                    // BARRA DE PROGRESO PROYECTO 3
+                                    int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3) * 100);
+                                    System.out.print("\033[35m[");
+                                    for (int i = 0; i <= 100; i++) {
+                                        if (i <= porcentaje) {
+                                            System.out.print("\u25A0");
+                                        } else {
+                                            System.out.print("_");
+                                        }
+                                    }
+                                    System.out.print("]\033[39m");
+                                    System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+                                }
+
+                            }else if (opcion == 3){
+                                System.out.println("\nModificando un proyecto...");
                                 System.out.println("Selecciona el numero del proyecto a modificar (1, 2 o 3): ");
                                 int numProyecto = sc.nextInt();
                                 sc.nextLine();
@@ -506,6 +621,7 @@ public class Main {
                                     System.out.println("Proyecto no válido.");
                                     continue;
                                 }
+
                                 System.out.print("Introduce el nuevo nombre del proyecto: ");
                                 String nuevoNombre = sc.nextLine();
                                 System.out.print("Introduce la nueva descripción del proyecto: ");
@@ -564,9 +680,10 @@ public class Main {
                                     recompensa3_2 = nuevaRecompensa2;
                                     recompensa3_3 = nuevaRecompensa3;
                                 }
+
                                 System.out.println("Proyecto modificado con éxito.");
 
-                            } else if (opcion == 3) {
+                            } else if (opcion == 4) {
                                 System.out.println("\n--- Configuración ---");
                                 System.out.println("¿Que opción desea?");
                                 System.out.println("1. Cambiar nombre de usuario");
@@ -590,7 +707,7 @@ public class Main {
                                     System.out.println("Volviendo...");
                                     break;
                                 }
-                            } else if (opcion == 4) {
+                            } else if (opcion == 5) {
                                 break;
                             } else {
                                 System.out.println("Opción inválida.");
