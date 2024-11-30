@@ -104,7 +104,7 @@ public class Main {
 
                         // AQUÍ EMPIEZA EL MENÚ GESTOR
                         while (true) {
-                            System.out.println("\n--- Menú Gestor ---");
+                            System.out.println("\n\033[34m--- Menú Gestor ---\033[0m");
                             System.out.println("1. Mostrar todos los proyectos de la plataforma");
                             System.out.println("2. Crear un nuevo proyecto");
                             System.out.println("3. Modificar un proyecto existente");
@@ -259,10 +259,15 @@ public class Main {
                                 }
                                 System.out.println("Proyecto creado exitosamente.");
                             } else if (opcion == 3) {
-                                System.out.println("\nModificando un proyecto...");
-                                System.out.println("Selecciona el numero del proyecto a modificar (1, 2 o 3): ");
+                                System.out.println("\n1. Modificar proyecto 1 ");
+                                System.out.println("2. Modificar proyecto 2 ");
+                                System.out.println("3. Modificar proyecto 3 ");
+                                System.out.println("4. Volver ");
                                 int numProyecto = sc.nextInt();
                                 sc.nextLine();
+                                if (numProyecto == 4){
+                                    continue;
+                                }
                                 if (numProyecto < 1 || numProyecto > proyectosCreados) {
                                     System.out.println("Proyecto no válido.");
                                     continue;
@@ -350,7 +355,7 @@ public class Main {
                                 }
                                 if (opcionUsuarioPassword == 3) {
                                     System.out.println("Volviendo...");
-                                    break;
+                                    continue;
                                 }
                             } else if (opcion == 5) {
                                 System.out.println("Saliendo del menú Gestor...");
@@ -387,7 +392,7 @@ public class Main {
                         // AQUÍ EMPIEZA EL MENÚ INVERSOR 1
                         while (true) {
                             // Menú principal inversor 1
-                            System.out.println("\n--- Menú Inversor 1 ---");
+                            System.out.println("\n\033[32m--- Menú Inversor 1 ---\033[0m");
                             System.out.println("1. Mis inversiones");
                             System.out.println("2. Proyectos Disponibles");
                             System.out.println("3. Cartera digital");
@@ -589,7 +594,7 @@ public class Main {
                         // AQUÍ EMPIEZA EL MENÚ INVERSOR 2
                         while (true) {
                             // Menú principal inversor 2
-                            System.out.println("\n--- Menú Inversor 2 ---");
+                            System.out.println("\n\033[32m--- Menú Inversor 2 ---\033[0m");
                             System.out.println("1. Mis inversiones");
                             System.out.println("2. Proyectos Disponibles");
                             System.out.println("3. Cartera digital");
@@ -783,7 +788,7 @@ public class Main {
 
                         // AQUÍ EMPIEZA EL MENÚ ADMINISTRADOR
                         while (true) {
-                            System.out.println("\n--- Menú Administrador ---");
+                            System.out.println("\n\033[38;5;214m--- Menú Administrador ---\033[39m");
                             System.out.println("1. Panel de control");
                             System.out.println("2. Mostrar todos los proyectos de la plataforma");
                             System.out.println("3. Modificar un proyecto existente");
@@ -799,9 +804,10 @@ public class Main {
                                     System.out.println("\n--- Panel de Control ---");
                                     System.out.println("1. Bloquear usuario");
                                     System.out.println("2. Desbloquear usuario");
+                                    System.out.println("3. Volver");
                                     opcionPanelControl = sc.nextInt();
                                     sc.nextLine();
-                                } while (opcionPanelControl != 1 && opcionPanelControl != 2);
+                                } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
                                 switch (opcionPanelControl) {
                                     case 1:
                                         int opcionBloqueo = 0;
@@ -841,7 +847,7 @@ public class Main {
                                             System.out.println("1. Usuario Inversor 1");
                                             System.out.println("2. Usuario Inversor 2");
                                             System.out.println("3. Usuario Gestor");
-                                            System.out.println("4. Volver al Menú Administrador");
+                                            System.out.println("4. Volver");
                                             opcionDesbloqueo = sc.nextInt();
                                             sc.nextLine();
                                         } while (opcionDesbloqueo != 1 && opcionDesbloqueo != 2 && opcionDesbloqueo != 3 && opcionDesbloqueo != 4);
@@ -864,6 +870,7 @@ public class Main {
                                             case 4:
                                                 break;
                                         }
+                                    case 3:
                                         break;
                                 }
 
@@ -945,10 +952,17 @@ public class Main {
                                 }
 
                             } else if (opcion == 3) {
-                                System.out.println("\nModificando un proyecto...");
-                                System.out.println("Selecciona el numero del proyecto a modificar (1, 2 o 3): ");
+                                System.out.println("\n1. Modificar proyecto 1 ");
+                                System.out.println("2. Modificar proyecto 2 ");
+                                System.out.println("3. Modificar proyecto 3 ");
+                                System.out.println("4. Volver ");
+
                                 int numProyecto = sc.nextInt();
                                 sc.nextLine();
+
+                                if (numProyecto == 4) {
+                                    continue;
+                                }
                                 if (numProyecto < 1 || numProyecto > proyectosCreados) {
                                     System.out.println("Proyecto no válido.");
                                     continue;
@@ -1037,7 +1051,7 @@ public class Main {
                                 }
                                 if (opcionAdminPassword == 3) {
                                     System.out.println("Volviendo...");
-                                    break;
+                                    continue;
                                 }
                             } else if (opcion == 5) {
                                 break;
