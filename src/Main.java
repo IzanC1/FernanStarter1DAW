@@ -448,6 +448,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa1_1);
                                             System.out.println("Recompensa 2: " + recompensa1_2);
                                             System.out.println("Recompensa 3: " + recompensa1_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else if (proyectoSeleccionado == 2) {
                                             System.out.println("\n--- Detalles del Proyecto ---");
                                             System.out.println("Nombre: " + nombreProyecto2);
@@ -462,6 +464,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa2_1);
                                             System.out.println("Recompensa 2: " + recompensa2_2);
                                             System.out.println("Recompensa 3: " + recompensa2_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else if (proyectoSeleccionado == 3) {
                                             System.out.println("\n--- Detalles del Proyecto ---");
                                             System.out.println("Nombre: " + nombreProyecto3);
@@ -476,6 +480,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa3_1);
                                             System.out.println("Recompensa 2: " + recompensa3_2);
                                             System.out.println("Recompensa 3: " + recompensa3_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else {
                                             System.out.println("Proyecto no encontrado.");
                                         }
@@ -650,6 +656,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa1_1);
                                             System.out.println("Recompensa 2: " + recompensa1_2);
                                             System.out.println("Recompensa 3: " + recompensa1_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else if (proyectoSeleccionado == 2) {
                                             System.out.println("\n--- Detalles del Proyecto ---");
                                             System.out.println("Nombre: " + nombreProyecto2);
@@ -664,6 +672,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa2_1);
                                             System.out.println("Recompensa 2: " + recompensa2_2);
                                             System.out.println("Recompensa 3: " + recompensa2_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else if (proyectoSeleccionado == 3) {
                                             System.out.println("\n--- Detalles del Proyecto ---");
                                             System.out.println("Nombre: " + nombreProyecto3);
@@ -678,6 +688,8 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa3_1);
                                             System.out.println("Recompensa 2: " + recompensa3_2);
                                             System.out.println("Recompensa 3: " + recompensa3_3);
+                                            sc.nextLine();
+                                            sc.nextLine();
                                         } else {
                                             System.out.println("Proyecto no encontrado.");
                                         }
