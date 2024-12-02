@@ -265,7 +265,7 @@ public class Main {
                                 System.out.println("4. Volver ");
                                 int numProyecto = sc.nextInt();
                                 sc.nextLine();
-                                if (numProyecto == 4){
+                                if (numProyecto == 4) {
                                     continue;
                                 }
                                 if (numProyecto < 1 || numProyecto > proyectosCreados) {
@@ -448,6 +448,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa1_1);
                                             System.out.println("Recompensa 2: " + recompensa1_2);
                                             System.out.println("Recompensa 3: " + recompensa1_3);
+                                            // BARRA DE PROGRESO PROYECTO 1
+                                            int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else if (proyectoSeleccionado == 2) {
@@ -464,6 +476,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa2_1);
                                             System.out.println("Recompensa 2: " + recompensa2_2);
                                             System.out.println("Recompensa 3: " + recompensa2_3);
+                                            // BARRA DE PROGRESO PROYECTO 2
+                                            int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else if (proyectoSeleccionado == 3) {
@@ -480,6 +504,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa3_1);
                                             System.out.println("Recompensa 2: " + recompensa3_2);
                                             System.out.println("Recompensa 3: " + recompensa3_3);
+                                            // BARRA DE PROGRESO PROYECTO 3
+                                            int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else {
@@ -656,6 +692,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa1_1);
                                             System.out.println("Recompensa 2: " + recompensa1_2);
                                             System.out.println("Recompensa 3: " + recompensa1_3);
+                                            // BARRA DE PROGRESO PROYECTO 1
+                                            int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else if (proyectoSeleccionado == 2) {
@@ -672,6 +720,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa2_1);
                                             System.out.println("Recompensa 2: " + recompensa2_2);
                                             System.out.println("Recompensa 3: " + recompensa2_3);
+                                            // BARRA DE PROGRESO PROYECTO 2
+                                            int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else if (proyectoSeleccionado == 3) {
@@ -688,6 +748,18 @@ public class Main {
                                             System.out.println("Recompensa 1: " + recompensa3_1);
                                             System.out.println("Recompensa 2: " + recompensa3_2);
                                             System.out.println("Recompensa 3: " + recompensa3_3);
+                                            // BARRA DE PROGRESO PROYECTO 3
+                                            int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3) * 100);
+                                            System.out.print("\033[35m[");
+                                            for (int i = 0; i <= 100; i++) {
+                                                if (i <= porcentaje) {
+                                                    System.out.print("■");
+                                                } else {
+                                                    System.out.print("_");
+                                                }
+                                            }
+                                            System.out.print("]\033[39m");
+                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
                                             sc.nextLine();
                                             sc.nextLine();
                                         } else {
