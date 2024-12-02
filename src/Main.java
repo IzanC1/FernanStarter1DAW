@@ -343,13 +343,13 @@ public class Main {
                                 sc.nextLine();
                                 if (opcionUsuarioPassword == 1) {
                                     System.out.println("Ingrese su nuevo nombre de usuario");
-                                    String nuevoGestor = sc.nextLine();
+                                    String nuevoGestor = sc.nextLine().toLowerCase().trim();
                                     gestor = nuevoGestor;
                                     System.out.println("Has reestablecido su nombre de usuario");
                                 }
                                 if (opcionUsuarioPassword == 2) {
                                     System.out.println("Ingrese la nueva contraseña");
-                                    String nuevapassGestor = sc.nextLine();
+                                    String nuevapassGestor = sc.nextLine().toLowerCase().trim();
                                     passGestor = nuevapassGestor;
                                     System.out.println("Has reestablecido su contraseña");
                                 }
@@ -547,11 +547,11 @@ public class Main {
 
                                 if (configuracion == 1) {
                                     System.out.print("Introduce el nuevo nombre de usuario: ");
-                                    inversor1 = sc.nextLine();
+                                    inversor1 = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Nombre de usuario cambiado.");
                                 } else if (configuracion == 2) {
                                     System.out.print("Introduce la nueva contraseña: ");
-                                    passInversor1 = sc.nextLine();
+                                    passInversor1 = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Contraseña cambiada.");
                                 } else if (configuracion == 3) {
                                     System.out.println("Volviendo al menú...");
@@ -748,10 +748,10 @@ public class Main {
                                 sc.nextLine();
 
                                 if (configuracion == 1) {
-                                    inversor2 = sc.nextLine();
+                                    inversor2 = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Nombre de usuario cambiado.");
                                 } else if (configuracion == 2) {
-                                    passInversor2 = sc.nextLine();
+                                    passInversor2 = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Contraseña cambiada.");
                                 } else if (configuracion == 3) {
                                     System.out.println("Volviendo al menú...");
@@ -1039,13 +1039,13 @@ public class Main {
                                 sc.nextLine();
                                 if (opcionAdminPassword == 1) {
                                     System.out.println("Ingrese su nuevo nombre de usuario");
-                                    String nuevoAdmin = sc.nextLine();
+                                    String nuevoAdmin = sc.nextLine().toLowerCase().trim();
                                     admin = nuevoAdmin;
                                     System.out.println("Has reestablecido su nombre de usuario");
                                 }
                                 if (opcionAdminPassword == 2) {
                                     System.out.println("Ingrese la nueva contraseña");
-                                    String nuevapassAdmin = sc.nextLine();
+                                    String nuevapassAdmin = sc.nextLine().toLowerCase().trim();
                                     passAdmin = nuevapassAdmin;
                                     System.out.println("Has reestablecido su contraseña");
                                 }
