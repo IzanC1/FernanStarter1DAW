@@ -102,7 +102,7 @@ public class Main {
                         System.out.println("Has accedido como Gestor.");
                         intentosGestor = 3;
 
-                        // AQUÍ EMPIEZA EL MENÚ GESTOR
+                        // INICIO MENÚ GESTOR
                         while (true) {
                             System.out.println("\n\033[34m--- Menú Gestor ---\033[0m");
                             System.out.println("1. Mostrar todos los proyectos de la plataforma");
@@ -134,7 +134,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -158,7 +158,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -182,7 +182,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -343,19 +343,16 @@ public class Main {
                                 sc.nextLine();
                                 if (opcionUsuarioPassword == 1) {
                                     System.out.println("Ingrese su nuevo nombre de usuario");
-                                    String nuevoGestor = sc.nextLine().toLowerCase().trim();
-                                    gestor = nuevoGestor;
+                                    gestor = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Has reestablecido su nombre de usuario");
                                 }
                                 if (opcionUsuarioPassword == 2) {
                                     System.out.println("Ingrese la nueva contraseña");
-                                    String nuevapassGestor = sc.nextLine().toLowerCase().trim();
-                                    passGestor = nuevapassGestor;
+                                    passGestor = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Has reestablecido su contraseña");
                                 }
                                 if (opcionUsuarioPassword == 3) {
                                     System.out.println("Volviendo...");
-                                    continue;
                                 }
                             } else if (opcion == 5) {
                                 System.out.println("Saliendo del menú Gestor...");
@@ -364,7 +361,7 @@ public class Main {
                                 System.out.println("Opcion inválida. Por favor, selecciona una opcion válida.");
                             }
 
-                        } // AQUÍ ACABA EL MENÚ GESTOR
+                        } // FIN MENÚ GESTOR
                         break;
                     } else {
                         intentosGestor--;
@@ -389,7 +386,7 @@ public class Main {
                         System.out.println("Has accedido como Inversor1.");
                         intentosInversor1 = 3;
 
-                        // AQUÍ EMPIEZA EL MENÚ INVERSOR 1
+                        // INICIO MENÚ INVERSOR 1
                         while (true) {
                             // Menú principal inversor 1
                             System.out.println("\n\033[32m--- Menú Inversor 1 ---\033[0m");
@@ -565,7 +562,7 @@ public class Main {
                                 System.out.println("Opción inválida.");
                             }
                         }
-// AQUÍ ACABA EL MENÚ INVERSOR 1
+// FIN MENÚ INVERSOR 1
 
                         break;
                     } else {
@@ -591,7 +588,7 @@ public class Main {
                         System.out.println("Has accedido como Inversor2.");
                         intentosInversor2 = 3;
 
-                        // AQUÍ EMPIEZA EL MENÚ INVERSOR 2
+                        // INICIO MENÚ INVERSOR 2
                         while (true) {
                             // Menú principal inversor 2
                             System.out.println("\n\033[32m--- Menú Inversor 2 ---\033[0m");
@@ -765,7 +762,7 @@ public class Main {
                                 System.out.println("Opción inválida.");
                             }
                         }
-                        // AQUÍ ACABA EL MENÚ INVERSOR 2
+                        // FIN MENÚ INVERSOR 2
 
                         break;
                     } else {
@@ -786,7 +783,7 @@ public class Main {
                     if (contrasena.equals(passAdmin)) {
                         System.out.println("Has accedido como Administrador.");
 
-                        // AQUÍ EMPIEZA EL MENÚ ADMINISTRADOR
+                        // INICIO MENÚ ADMINISTRADOR
                         while (true) {
                             System.out.println("\n\033[38;5;214m--- Menú Administrador ---\033[39m");
                             System.out.println("1. Panel de control");
@@ -799,7 +796,7 @@ public class Main {
                             sc.nextLine();
 
                             if (opcion == 1) {
-                                int opcionPanelControl = 0;
+                                int opcionPanelControl;
                                 do {
                                     System.out.println("\n--- Panel de Control ---");
                                     System.out.println("1. Bloquear usuario");
@@ -810,7 +807,7 @@ public class Main {
                                 } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
                                 switch (opcionPanelControl) {
                                     case 1:
-                                        int opcionBloqueo = 0;
+                                        int opcionBloqueo;
                                         do {
                                             System.out.println("\n¿A qué usuario bloquear?");
                                             System.out.println("1. Usuario Inversor 1");
@@ -841,7 +838,7 @@ public class Main {
                                         }
                                         break;
                                     case 2:
-                                        int opcionDesbloqueo = 0;
+                                        int opcionDesbloqueo;
                                         do {
                                             System.out.println("\n¿A qué usuario desbloquear?");
                                             System.out.println("1. Usuario Inversor 1");
@@ -894,7 +891,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -918,7 +915,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -942,7 +939,7 @@ public class Main {
                                     System.out.print("\033[35m[");
                                     for (int i = 0; i <= 100; i++) {
                                         if (i <= porcentaje) {
-                                            System.out.print("\u25A0");
+                                            System.out.print("■");
                                         } else {
                                             System.out.print("_");
                                         }
@@ -1039,26 +1036,23 @@ public class Main {
                                 sc.nextLine();
                                 if (opcionAdminPassword == 1) {
                                     System.out.println("Ingrese su nuevo nombre de usuario");
-                                    String nuevoAdmin = sc.nextLine().toLowerCase().trim();
-                                    admin = nuevoAdmin;
+                                    admin = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Has reestablecido su nombre de usuario");
                                 }
                                 if (opcionAdminPassword == 2) {
                                     System.out.println("Ingrese la nueva contraseña");
-                                    String nuevapassAdmin = sc.nextLine().toLowerCase().trim();
-                                    passAdmin = nuevapassAdmin;
+                                    passAdmin = sc.nextLine().toLowerCase().trim();
                                     System.out.println("Has reestablecido su contraseña");
                                 }
                                 if (opcionAdminPassword == 3) {
                                     System.out.println("Volviendo...");
-                                    continue;
                                 }
                             } else if (opcion == 5) {
                                 break;
                             } else {
                                 System.out.println("Opción inválida.");
                             }
-                        } // AQUÍ ACABA EL MENÚ ADMINISTRADOR
+                        } // FIN MENÚ ADMINISTRADOR
                         break;
                     } else {
                         System.out.println("Contraseña incorrecta.");
