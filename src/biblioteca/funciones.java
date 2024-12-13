@@ -96,6 +96,17 @@ public class funciones {
         return bloqueados;
     }
 
+    public static void graficoBarras (int porcentaje){
+        System.out.print("\033[35m[");
+        for (int i = 0; i <= 100; i++) {
+            if (i <= porcentaje) {
+                System.out.print("■");
+            } else {
+                System.out.print("_");
+            }
+        }
+        System.out.print("]\033[39m");
+    }
 
 
 
