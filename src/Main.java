@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static biblioteca.funciones.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,7 +16,7 @@ public class Main {
         String inversor2 = "inversor2";
         String passInversor2 = "inversor2";
 
-// Variables de los inversores
+        // Variables de los inversores
         boolean invertidoEnProyecto1_1 = false;
         boolean invertidoEnProyecto2_1 = false;
         boolean invertidoEnProyecto3_1 = false;
@@ -39,9 +41,8 @@ public class Main {
         int intentosInversor1 = 3;
         int intentosInversor2 = 3;
 
-        boolean bloqueadoGestor = false;
-        boolean bloqueadoInversor1 = false;
-        boolean bloqueadoInversor2 = false;
+        boolean [] bloqueados = {false, false, false};
+        // POSICIÓN DE USUARIO EN LOS ARRAYS: Gestor -> 0 / Inversor1 -> 1 / Inversor2 -> 2
 
         //Variables de proyectos
         String nombreProyecto1 = "";
@@ -90,7 +91,7 @@ public class Main {
             }
 
             if (usuario.equals(gestor)) {
-                if (bloqueadoGestor) {
+                if (bloqueados[0]) {
                     System.out.println("La cuenta del Gestor está bloqueada. Contacte con el administrador.");
                     continue;
                 }
@@ -367,14 +368,14 @@ public class Main {
                         intentosGestor--;
                         System.out.println("Contraseña incorrecta. Te quedan " + intentosGestor + " intentos.");
                         if (intentosGestor == 0) {
-                            bloqueadoGestor = true;
+                            bloqueados[0] = true;
                             System.out.println("La cuenta del Gestor ha sido bloqueada.");
                         }
                     }
                 }
 
             } else if (usuario.equals(inversor1)) {
-                if (bloqueadoInversor1) {
+                if (bloqueados[1]) {
                     System.out.println("La cuenta del Inversor1 está bloqueada. Contacte con el administrador.");
                     continue;
                 }
@@ -611,14 +612,14 @@ public class Main {
                         intentosInversor1--;
                         System.out.println("Contraseña incorrecta. Te quedan " + intentosInversor1 + " intentos.");
                         if (intentosInversor1 == 0) {
-                            bloqueadoInversor1 = true;
+                            bloqueados[1] = true;
                             System.out.println("La cuenta del Inversor1 ha sido bloqueada.");
                         }
                     }
                 }
 
             } else if (usuario.equals(inversor2)) {
-                if (bloqueadoInversor2) {
+                if (bloqueados[2]) {
                     System.out.println("La cuenta del Inversor2 está bloqueada. Contacte con el administrador.");
                     continue;
                 }
@@ -853,7 +854,7 @@ public class Main {
                         intentosInversor2--;
                         System.out.println("Contraseña incorrecta. Te quedan " + intentosInversor2 + " intentos.");
                         if (intentosInversor2 == 0) {
-                            bloqueadoInversor2 = true;
+                            bloqueados[2] = true;
                             System.out.println("La cuenta del Inversor2 ha sido bloqueada.");
                         }
                     }
@@ -869,91 +870,17 @@ public class Main {
 
                         // INICIO MENÚ ADMINISTRADOR
                         while (true) {
-                            System.out.println("\n\033[38;5;214m--- Menú Administrador ---\033[39m");
-                            System.out.println("1. Panel de control");
-                            System.out.println("2. Mostrar todos los proyectos de la plataforma");
-                            System.out.println("3. Modificar un proyecto existente");
-                            System.out.println("4. Configuración");
-                            System.out.println("5. Cerrar sesión");
-                            System.out.print("Selecciona una opción: ");
-                            int opcion = sc.nextInt();
-                            sc.nextLine();
+                            int opcion = menuPrincipalAdmin();
 
                             if (opcion == 1) {
-                                int opcionPanelControl;
-                                do {
-                                    System.out.println("\n--- Panel de Control ---");
-                                    System.out.println("1. Bloquear usuario");
-                                    System.out.println("2. Desbloquear usuario");
-                                    System.out.println("3. Volver");
-                                    opcionPanelControl = sc.nextInt();
-                                    sc.nextLine();
-                                } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
-                                switch (opcionPanelControl) {
-                                    case 1:
-                                        int opcionBloqueo;
-                                        do {
-                                            System.out.println("\n¿A qué usuario bloquear?");
-                                            System.out.println("1. Usuario Inversor 1");
-                                            System.out.println("2. Usuario Inversor 2");
-                                            System.out.println("3. Usuario Gestor");
-                                            System.out.println("4. Volver al Menú Administrador");
-                                            opcionBloqueo = sc.nextInt();
-                                            sc.nextLine();
-                                        } while (opcionBloqueo != 1 && opcionBloqueo != 2 && opcionBloqueo != 3 && opcionBloqueo != 4);
-                                        switch (opcionBloqueo) {
-                                            case 1:
-                                                bloqueadoInversor1 = true;
-                                                intentosInversor1 = 0;
-                                                System.out.println("Has bloqueado al Inversor 1 correctamente");
-                                                break;
-                                            case 2:
-                                                bloqueadoInversor2 = true;
-                                                intentosInversor2 = 0;
-                                                System.out.println("Has bloqueado al Inversor 2 correctamente");
-                                                break;
-                                            case 3:
-                                                bloqueadoGestor = true;
-                                                intentosGestor = 0;
-                                                System.out.println("Has bloqueado al Gestor correctamente");
-                                                break;
-                                            case 4:
-                                                break;
-                                        }
-                                        break;
-                                    case 2:
-                                        int opcionDesbloqueo;
-                                        do {
-                                            System.out.println("\n¿A qué usuario desbloquear?");
-                                            System.out.println("1. Usuario Inversor 1");
-                                            System.out.println("2. Usuario Inversor 2");
-                                            System.out.println("3. Usuario Gestor");
-                                            System.out.println("4. Volver");
-                                            opcionDesbloqueo = sc.nextInt();
-                                            sc.nextLine();
-                                        } while (opcionDesbloqueo != 1 && opcionDesbloqueo != 2 && opcionDesbloqueo != 3 && opcionDesbloqueo != 4);
-                                        switch (opcionDesbloqueo) {
-                                            case 1:
-                                                bloqueadoInversor1 = false;
-                                                intentosInversor1 = 3;
-                                                System.out.println("Has desbloqueado al Inversor 1 correctamente");
-                                                break;
-                                            case 2:
-                                                bloqueadoInversor2 = false;
-                                                intentosInversor2 = 3;
-                                                System.out.println("Has desbloqueado al Inversor 2 correctamente");
-                                                break;
-                                            case 3:
-                                                bloqueadoGestor = false;
-                                                intentosGestor = 3;
-                                                System.out.println("Has desbloqueado al Gestor correctamente");
-                                                break;
-                                            case 4:
-                                                break;
-                                        }
-                                    case 3:
-                                        break;
-                                }
+
+                                panelDeControl(bloqueados);
+                                if (bloqueados[0]) intentosGestor=0;
+                                else intentosGestor=3;
+                                if (bloqueados[1]) intentosInversor1=0;
+                                else intentosInversor1=3;
+                                if (bloqueados[2]) intentosInversor2=0;
+                                else intentosInversor2=3;
 
                             } else if (opcion == 2) {
                                 System.out.println("\n--- Proyectos ---");
