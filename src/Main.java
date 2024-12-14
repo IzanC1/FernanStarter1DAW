@@ -311,24 +311,14 @@ public class Main {
 
                                 System.out.println("Proyecto modificado con éxito.");
                             } else if (opcion == 4) {
-                                System.out.println("\nConfiguración de la cuenta: ");
-                                System.out.println("¿Que opción desea?");
-                                System.out.println("1. Cambiar nombre de usuario");
-                                System.out.println("2. Cambiar contraseña");
-                                System.out.println("3. Volver");
-                                int opcionUsuarioPassword = sc.nextInt();
-                                sc.nextLine();
-                                if (opcionUsuarioPassword == 1) {
-                                    System.out.println("Ingrese su nuevo nombre de usuario");
-                                    gestor = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Has reestablecido su nombre de usuario");
+                                int opcionConfiguracion = menuConfiguracion();
+                                if (opcionConfiguracion == 1) {
+                                    gestor = cambioNombre(gestor);
                                 }
-                                if (opcionUsuarioPassword == 2) {
-                                    System.out.println("Ingrese la nueva contraseña");
-                                    passGestor = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Has reestablecido su contraseña");
+                                if (opcionConfiguracion == 2) {
+                                    passGestor = cambioPassword(passGestor);
                                 }
-                                if (opcionUsuarioPassword == 3) {
+                                if (opcionConfiguracion == 3) {
                                     System.out.println("Volviendo...");
                                 }
                             } else if (opcion == 5) {
@@ -530,25 +520,15 @@ public class Main {
                                 referidosInversor1 += (referidosInversor1.isEmpty() ? "" : ", ") + nuevoReferido;
                                 System.out.println("Referido añadido con éxito.");
                             } else if (opcion == 5) {
-                                System.out.println("\n--- Configuración ---");
-                                System.out.println("1. Cambiar nombre de usuario");
-                                System.out.println("2. Cambiar contraseña");
-                                System.out.println("3. Volver");
-                                int configuracion = sc.nextInt();
-                                sc.nextLine();
-
-                                if (configuracion == 1) {
-                                    System.out.print("Introduce el nuevo nombre de usuario: ");
-                                    inversor1 = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Nombre de usuario cambiado.");
-                                } else if (configuracion == 2) {
-                                    System.out.print("Introduce la nueva contraseña: ");
-                                    passInversor1 = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Contraseña cambiada.");
-                                } else if (configuracion == 3) {
-                                    System.out.println("Volviendo al menú...");
-                                } else {
-                                    System.out.println("Opción inválida.");
+                                int opcionConfiguracion = menuConfiguracion();
+                                if (opcionConfiguracion == 1) {
+                                    inversor1 = cambioNombre(inversor1);
+                                }
+                                if (opcionConfiguracion == 2) {
+                                    passInversor1 = cambioPassword(passInversor1);
+                                }
+                                if (opcionConfiguracion == 3) {
+                                    System.out.println("Volviendo...");
                                 }
                             } else if (opcion == 6) {
                                 System.out.println("Sesión cerrada.");
@@ -750,23 +730,15 @@ public class Main {
                                 referidosInversor2 += (referidosInversor2.isEmpty() ? "" : ", ") + nuevoReferido;
                                 System.out.println("Referido añadido con éxito.");
                             } else if (opcion == 5) {
-                                System.out.println("\n--- Configuración ---");
-                                System.out.println("1. Cambiar nombre de usuario");
-                                System.out.println("2. Cambiar contraseña");
-                                System.out.println("3. Volver");
-                                int configuracion = sc.nextInt();
-                                sc.nextLine();
-
-                                if (configuracion == 1) {
-                                    inversor2 = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Nombre de usuario cambiado.");
-                                } else if (configuracion == 2) {
-                                    passInversor2 = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Contraseña cambiada.");
-                                } else if (configuracion == 3) {
-                                    System.out.println("Volviendo al menú...");
-                                } else {
-                                    System.out.println("Opción inválida.");
+                                int opcionConfiguracion = menuConfiguracion();
+                                if (opcionConfiguracion == 1) {
+                                    inversor2 = cambioNombre(inversor2);
+                                }
+                                if (opcionConfiguracion == 2) {
+                                    passInversor2 = cambioPassword(passInversor2);
+                                }
+                                if (opcionConfiguracion == 3) {
+                                    System.out.println("Volviendo...");
                                 }
                             } else if (opcion == 6) {
                                 System.out.println("Sesión cerrada.");
@@ -942,26 +914,17 @@ public class Main {
                                 System.out.println("Proyecto modificado con éxito.");
 
                             } else if (opcion == 4) {
-                                System.out.println("\n--- Configuración ---");
-                                System.out.println("¿Que opción desea?");
-                                System.out.println("1. Cambiar nombre de usuario");
-                                System.out.println("2. Cambiar contraseña");
-                                System.out.println("3. Volver");
-                                int opcionAdminPassword = sc.nextInt();
-                                sc.nextLine();
-                                if (opcionAdminPassword == 1) {
-                                    System.out.println("Ingrese su nuevo nombre de usuario");
-                                    admin = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Has reestablecido su nombre de usuario");
+                                int opcionConfiguracion = menuConfiguracion();
+                                if (opcionConfiguracion == 1) {
+                                    admin = cambioNombre(admin);
                                 }
-                                if (opcionAdminPassword == 2) {
-                                    System.out.println("Ingrese la nueva contraseña");
-                                    passAdmin = sc.nextLine().toLowerCase().trim();
-                                    System.out.println("Has reestablecido su contraseña");
+                                if (opcionConfiguracion == 2) {
+                                    passAdmin = cambioPassword(passAdmin);
                                 }
-                                if (opcionAdminPassword == 3) {
+                                if (opcionConfiguracion == 3) {
                                     System.out.println("Volviendo...");
                                 }
+
                             } else if (opcion == 5) {
                                 break;
                             } else {

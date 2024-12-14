@@ -108,6 +108,37 @@ public class funciones {
         System.out.print("]\033[39m");
     }
 
+    public static int menuConfiguracion (){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\n--- Configuración ---");
+        System.out.println("¿Que opción desea?");
+        System.out.println("1. Cambiar nombre de usuario");
+        System.out.println("2. Cambiar contraseña");
+        System.out.println("3. Volver");
+        int opcionConfiguracion = sc.nextInt();
+        sc.nextLine();
+
+        return opcionConfiguracion;
+    }
+    public static String cambioNombre (String nombreActual){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese su nuevo nombre de usuario");
+        String nuevoNombre = sc.nextLine().toLowerCase().trim();
+        System.out.println("Has reestablecido su nombre de usuario");
+
+        return nuevoNombre;
+    }
+    public static String cambioPassword (String passwordActual){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese la nueva contraseña");
+        String passwordNueva = sc.nextLine().toLowerCase().trim();
+        System.out.println("Has reestablecido su contraseña");
+
+        return passwordNueva;
+    }
 
 
 }
