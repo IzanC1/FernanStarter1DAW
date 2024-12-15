@@ -31,8 +31,7 @@ public class funciones {
 
         } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
     }
-
-    public static boolean[] bloquearDesbloquear (int opcionPanelControl, boolean[] bloqueados){
+    public static void bloquearDesbloquear (int opcionPanelControl, boolean[] bloqueados){
         Scanner sc = new Scanner(System.in);
         switch (opcionPanelControl) {
             case 1:
@@ -93,7 +92,6 @@ public class funciones {
             case 3:
                 break;
         }
-        return bloqueados;
     }
 
     public static void graficoBarras (int porcentaje){
