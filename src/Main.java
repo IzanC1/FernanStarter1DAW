@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 import static biblioteca.funciones.*;
-
+import static biblioteca.funcionesCorreo.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -102,6 +102,8 @@ public class Main {
                     if (contrasena.equals(passGestor)) {
                         System.out.println("Has accedido como Gestor.");
                         intentosGestor = 3;
+
+                        verificacionCorreo();
 
                         // INICIO MENÚ GESTOR
                         while (true) {
@@ -353,6 +355,8 @@ public class Main {
                         System.out.println("Has accedido como Inversor1.");
                         intentosInversor1 = 3;
 
+                        verificacionCorreo();
+
                         // INICIO MENÚ INVERSOR 1
                         while (true) {
                             // Menú principal inversor 1
@@ -563,6 +567,8 @@ public class Main {
                         System.out.println("Has accedido como Inversor2.");
                         intentosInversor2 = 3;
 
+                        verificacionCorreo();
+
                         // INICIO MENÚ INVERSOR 2
                         while (true) {
                             // Menú principal inversor 2
@@ -767,6 +773,8 @@ public class Main {
 
                     if (contrasena.equals(passAdmin)) {
                         System.out.println("Has accedido como Administrador.");
+
+                        verificacionCorreo();
 
                         // INICIO MENÚ ADMINISTRADOR
                         while (true) {
