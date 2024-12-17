@@ -166,193 +166,21 @@ public class Main {
                         System.out.println("Has accedido como Inversor1.");
                         intentosInversor1 = 3;
 
-                        verificacionCorreo();
+                        //verificacionCorreo();
 
                         // INICIO MENÚ INVERSOR 1
-                        while (true) {
-                            // Menú principal inversor 1
-                            System.out.println("\n\033[32m--- Menú Inversor 1 ---\033[0m");
-                            System.out.println("1. Mis inversiones");
-                            System.out.println("2. Proyectos Disponibles");
-                            System.out.println("3. Cartera digital");
-                            System.out.println("4. Referidos");
-                            System.out.println("5. Configuración");
-                            System.out.println("6. Cerrar sesión");
-                            System.out.print("Selecciona una opción: ");
-                            int opcion = sc.nextInt();
-
-                            if (opcion == 1) {
-                                System.out.println("\n--- Mis Inversiones ---");
-                                // Mostrar inversiones para inversor 1
-                                if (invertidoEnProyecto1_1) {
-                                    System.out.println("Inversión en " + nombreProyecto1 + " por " + cantidadFinanciada1_1);
-                                }
-                                if (invertidoEnProyecto2_1) {
-                                    System.out.println("Inversión en " + nombreProyecto2 + " por " + cantidadFinanciada2_1);
-                                }
-                                if (invertidoEnProyecto3_1) {
-                                    System.out.println("Inversión en " + nombreProyecto3 + " por " + cantidadFinanciada3_1);
-                                }
-                                if (!invertidoEnProyecto1_1 && !invertidoEnProyecto2_1 && !invertidoEnProyecto3_1) {
-                                    System.out.println("Aún no has realizado ninguna inversión.");
-                                }
-                            } else if (opcion == 2) {
-                                while (true) {
-                                    System.out.println("\n--- Proyectos Disponibles ---");
-                                    System.out.println("1. Listar proyectos");
-                                    System.out.println("2. Ver detalles de un proyecto");
-                                    System.out.println("3. Invertir en un proyecto");
-                                    System.out.println("4. Volver al menú principal");
-                                    System.out.print("Selecciona una opción: ");
-                                    int opcionProyectos = sc.nextInt();
-
-                                    if (opcionProyectos == 1) {
-                                        System.out.println("\n--- Listado de Proyectos ---");
-                                        System.out.printf("%-3s | %-20s | %-12s | %-10s | %-10s\n", "N°", "Proyecto", "Categoría", "Necesario", "Financiado");
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 1, nombreProyecto1, categoriaProyecto1, cantidadNecesaria1, cantidadFinanciada1);
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 2, nombreProyecto2, categoriaProyecto2, cantidadNecesaria2, cantidadFinanciada2);
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 3, nombreProyecto3, categoriaProyecto3, cantidadNecesaria3, cantidadFinanciada3);
-                                    } else if (opcionProyectos == 2) {
-                                        System.out.print("\nSelecciona el número del proyecto (1-3): ");
-                                        int proyectoSeleccionado = sc.nextInt();
-                                        // Mostrar detalles del proyecto
-                                        if (proyectoSeleccionado == 1) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto1);
-                                            System.out.println("Categoría: " + categoriaProyecto1);
-                                            System.out.println("Descripción: " + descripcionProyecto1);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria1);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada1);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria1 - cantidadFinanciada1));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio1);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin1);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa1_1);
-                                            System.out.println("Recompensa 2: " + recompensa1_2);
-                                            System.out.println("Recompensa 3: " + recompensa1_3);
-                                            // BARRA DE PROGRESO PROYECTO 1
-                                            int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else if (proyectoSeleccionado == 2) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto2);
-                                            System.out.println("Categoría: " + categoriaProyecto2);
-                                            System.out.println("Descripción: " + descripcionProyecto2);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria2);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada2);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria2 - cantidadFinanciada2));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio2);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin2);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa2_1);
-                                            System.out.println("Recompensa 2: " + recompensa2_2);
-                                            System.out.println("Recompensa 3: " + recompensa2_3);
-                                            // BARRA DE PROGRESO PROYECTO 2
-                                            int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else if (proyectoSeleccionado == 3) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto3);
-                                            System.out.println("Categoría: " + categoriaProyecto3);
-                                            System.out.println("Descripción: " + descripcionProyecto3);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria3);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada3);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria3 - cantidadFinanciada3));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio3);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin3);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa3_1);
-                                            System.out.println("Recompensa 2: " + recompensa3_2);
-                                            System.out.println("Recompensa 3: " + recompensa3_3);
-                                            // BARRA DE PROGRESO PROYECTO 3
-                                            int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else {
-                                            System.out.println("Proyecto no encontrado.");
-                                        }
-                                    } else if (opcionProyectos == 3) {
-                                        System.out.print("\nSelecciona el número del proyecto para invertir (1-3): ");
-                                        int proyectoInvertir = sc.nextInt();
-                                        if (proyectoInvertir == 1 || proyectoInvertir == 2 || proyectoInvertir == 3) {
-                                            double cantidadRestante = proyectoInvertir == 1 ? (cantidadNecesaria1 - cantidadFinanciada1) : proyectoInvertir == 2 ? (cantidadNecesaria2 - cantidadFinanciada2) : (cantidadNecesaria3 - cantidadFinanciada3);
-
-                                            System.out.println("Cantidad restante para financiar: " + cantidadRestante);
-                                            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldoDisponibleInversor1 + "): ");
-                                            double cantidadInvertir = sc.nextDouble();
-
-                                            if (cantidadInvertir > 0 && cantidadInvertir <= saldoDisponibleInversor1 && cantidadInvertir <= cantidadRestante) {
-                                                if (proyectoInvertir == 1) {
-                                                    cantidadFinanciada1 += cantidadInvertir;
-                                                    invertidoEnProyecto1_1 = true;  // Marcar como invertido
-                                                } else if (proyectoInvertir == 2) {
-                                                    cantidadFinanciada2 += cantidadInvertir;
-                                                    invertidoEnProyecto2_1 = true;  // Marcar como invertido
-                                                } else {
-                                                    cantidadFinanciada3 += cantidadInvertir;
-                                                    invertidoEnProyecto3_1 = true;  // Marcar como invertido
-                                                }
-
-                                                saldoDisponibleInversor1 -= cantidadInvertir;
-                                                System.out.println("Inversión realizada con éxito.");
-                                            } else {
-                                                System.out.println("Cantidad inválida.");
-                                            }
-                                        } else {
-                                            System.out.println("Proyecto no encontrado.");
-                                        }
-                                    } else if (opcionProyectos == 4) {
-                                        break;
-                                    } else {
-                                        System.out.println("Opción inválida.");
-                                    }
-                                }
-                            } else if (opcion == 3) {
-                                System.out.println("\n--- Cartera Digital ---");
-                                System.out.println("Saldo disponible: " + saldoDisponibleInversor1);
-                                System.out.print("¿Cuánto deseas añadir a tu saldo? ");
-                                double cantidad = sc.nextDouble();
-                                if (cantidad > 0) {
-                                    saldoDisponibleInversor1 += cantidad;
-                                    System.out.println("Saldo añadido con éxito.");
-                                } else {
-                                    System.out.println("Cantidad inválida.");
-                                }
-                            } else if (opcion == 4) {
-                                System.out.println("\n--- Referidos ---");
-                                System.out.println("Referidos actuales: " + (referidosInversor1.isEmpty() ? "Ninguno" : referidosInversor1));
-                                System.out.print("Introduce el correo del nuevo referido: ");
-                                sc.nextLine();
-                                String nuevoReferido = sc.nextLine();
-                                referidosInversor1 += (referidosInversor1.isEmpty() ? "" : ", ") + nuevoReferido;
-                                System.out.println("Referido añadido con éxito.");
-                            } else if (opcion == 5) {
-                                int opcionConfiguracion = menuConfiguracion();
-                                if (opcionConfiguracion == 1) {
-                                    inversor1 = cambioNombre(inversor1);
-                                }
-                                if (opcionConfiguracion == 2) {
-                                    passInversor1 = cambioPassword(passInversor1);
-                                }
-                                if (opcionConfiguracion == 3) {
-                                    System.out.println("Volviendo...");
-                                }
-                            } else if (opcion == 6) {
-                                System.out.println("Sesión cerrada.");
-                                break;
-                            } else {
-                                System.out.println("Opción inválida.");
-                            }
-                        }
-// FIN MENÚ INVERSOR 1
+                        menuInversor1(saldoDisponibleInversor1, referidosInversor1,
+                                invertidoEnProyecto1_1, invertidoEnProyecto2_1, invertidoEnProyecto3_1,
+                                cantidadFinanciada1_1, cantidadFinanciada2_1, cantidadFinanciada3_1,
+                                nombreProyecto1, nombreProyecto2, nombreProyecto3,
+                                categoriaProyecto1, categoriaProyecto2, categoriaProyecto3,
+                                cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3,
+                                cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3,
+                                descripcionProyecto1, descripcionProyecto2, descripcionProyecto3,
+                                recompensa1_1, recompensa1_2, recompensa1_3,
+                                recompensa2_1, recompensa2_2, recompensa2_3,
+                                recompensa3_1, recompensa3_2, recompensa3_3);
+                        // FIN MENÚ INVERSOR 1
 
                         break;
                     } else {
@@ -378,192 +206,20 @@ public class Main {
                         System.out.println("Has accedido como Inversor2.");
                         intentosInversor2 = 3;
 
-                        verificacionCorreo();
+                        //verificacionCorreo();
 
                         // INICIO MENÚ INVERSOR 2
-                        while (true) {
-                            // Menú principal inversor 2
-                            System.out.println("\n\033[32m--- Menú Inversor 2 ---\033[0m");
-                            System.out.println("1. Mis inversiones");
-                            System.out.println("2. Proyectos Disponibles");
-                            System.out.println("3. Cartera digital");
-                            System.out.println("4. Referidos");
-                            System.out.println("5. Configuración");
-                            System.out.println("6. Cerrar sesión");
-                            System.out.print("Selecciona una opción: ");
-                            int opcion = sc.nextInt();
-
-                            if (opcion == 1) {
-                                System.out.println("\n--- Mis Inversiones ---");
-                                // Mostrar inversiones para inversor 2
-                                if (invertidoEnProyecto1_2) {
-                                    System.out.println("Inversión en " + nombreProyecto1 + " por " + cantidadFinanciada1_2);
-                                }
-                                if (invertidoEnProyecto2_2) {
-                                    System.out.println("Inversión en " + nombreProyecto2 + " por " + invertidoEnProyecto2_2);
-                                }
-                                if (invertidoEnProyecto3_2) {
-                                    System.out.println("Inversión en " + nombreProyecto3 + " por " + cantidadFinanciada3_2);
-                                }
-                                if (!invertidoEnProyecto1_2 && !invertidoEnProyecto2_2 && !invertidoEnProyecto3_2) {
-                                    System.out.println("Aún no has realizado ninguna inversión.");
-                                }
-                            } else if (opcion == 2) {
-                                while (true) {
-                                    System.out.println("\n--- Proyectos Disponibles ---");
-                                    System.out.println("1. Listar proyectos");
-                                    System.out.println("2. Ver detalles de un proyecto");
-                                    System.out.println("3. Invertir en un proyecto");
-                                    System.out.println("4. Volver al menú principal");
-                                    System.out.print("Selecciona una opción: ");
-                                    int opcionProyectos = sc.nextInt();
-
-                                    if (opcionProyectos == 1) {
-                                        System.out.println("\n--- Listado de Proyectos ---");
-                                        System.out.printf("%-3s | %-20s | %-12s | %-10s | %-10s\n", "N°", "Proyecto", "Categoría", "Necesario", "Financiado");
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 1, nombreProyecto1, categoriaProyecto1, cantidadNecesaria1, cantidadFinanciada1);
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 2, nombreProyecto2, categoriaProyecto2, cantidadNecesaria2, cantidadFinanciada2);
-                                        System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", 3, nombreProyecto3, categoriaProyecto3, cantidadNecesaria3, cantidadFinanciada3);
-                                    } else if (opcionProyectos == 2) {
-                                        System.out.print("\nSelecciona el número del proyecto (1-3): ");
-                                        int proyectoSeleccionado = sc.nextInt();
-                                        // Mostrar detalles del proyecto
-                                        if (proyectoSeleccionado == 1) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto1);
-                                            System.out.println("Categoría: " + categoriaProyecto1);
-                                            System.out.println("Descripción: " + descripcionProyecto1);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria1);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada1);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria1 - cantidadFinanciada1));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio1);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin1);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa1_1);
-                                            System.out.println("Recompensa 2: " + recompensa1_2);
-                                            System.out.println("Recompensa 3: " + recompensa1_3);
-                                            // BARRA DE PROGRESO PROYECTO 1
-                                            int porcentaje = (int) ((cantidadFinanciada1 / cantidadNecesaria1) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else if (proyectoSeleccionado == 2) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto2);
-                                            System.out.println("Categoría: " + categoriaProyecto2);
-                                            System.out.println("Descripción: " + descripcionProyecto2);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria2);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada2);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria2 - cantidadFinanciada2));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio2);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin2);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa2_1);
-                                            System.out.println("Recompensa 2: " + recompensa2_2);
-                                            System.out.println("Recompensa 3: " + recompensa2_3);
-                                            // BARRA DE PROGRESO PROYECTO 2
-                                            int porcentaje = (int) ((cantidadFinanciada2 / cantidadNecesaria2) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else if (proyectoSeleccionado == 3) {
-                                            System.out.println("\n--- Detalles del Proyecto ---");
-                                            System.out.println("Nombre: " + nombreProyecto3);
-                                            System.out.println("Categoría: " + categoriaProyecto3);
-                                            System.out.println("Descripción: " + descripcionProyecto3);
-                                            System.out.println("Cantidad Necesaria: " + cantidadNecesaria3);
-                                            System.out.println("Cantidad Financiada: " + cantidadFinanciada3);
-                                            System.out.println("Cantidad Restante: " + (cantidadNecesaria3 - cantidadFinanciada3));
-                                            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechaInicio3);
-                                            System.out.println("Fecha fin de cierre de las inversiones: " + fechaFin3);
-                                            System.out.println("*** RECOMPENSAS ***");
-                                            System.out.println("Recompensa 1: " + recompensa3_1);
-                                            System.out.println("Recompensa 2: " + recompensa3_2);
-                                            System.out.println("Recompensa 3: " + recompensa3_3);
-                                            // BARRA DE PROGRESO PROYECTO 3
-                                            int porcentaje = (int) ((cantidadFinanciada3 / cantidadNecesaria3) * 100);
-                                            graficoBarras(porcentaje);
-                                            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-                                            sc.nextLine();
-                                            sc.nextLine();
-                                        } else {
-                                            System.out.println("Proyecto no encontrado.");
-                                        }
-                                    } else if (opcionProyectos == 3) {
-                                        System.out.print("\nSelecciona el número del proyecto para invertir (1-3): ");
-                                        int proyectoInvertir = sc.nextInt();
-                                        if (proyectoInvertir == 1 || proyectoInvertir == 2 || proyectoInvertir == 3) {
-                                            double cantidadRestante = proyectoInvertir == 1 ? (cantidadNecesaria1 - cantidadFinanciada1) : proyectoInvertir == 2 ? (cantidadNecesaria2 - cantidadFinanciada2) : (cantidadNecesaria3 - cantidadFinanciada3);
-
-                                            System.out.println("Cantidad restante para financiar: " + cantidadRestante);
-                                            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldoDisponibleInversor2 + "): ");
-                                            double cantidadInvertir = sc.nextDouble();
-
-                                            if (cantidadInvertir > 0 && cantidadInvertir <= saldoDisponibleInversor2 && cantidadInvertir <= cantidadRestante) {
-                                                if (proyectoInvertir == 1) {
-                                                    cantidadFinanciada1 += cantidadInvertir;
-                                                    invertidoEnProyecto1_2 = true;  // Marcar como invertido
-                                                } else if (proyectoInvertir == 2) {
-                                                    cantidadFinanciada2 += cantidadInvertir;
-                                                    invertidoEnProyecto2_2 = true;  // Marcar como invertido
-                                                } else {
-                                                    cantidadFinanciada3 += cantidadInvertir;
-                                                    invertidoEnProyecto3_2 = true;  // Marcar como invertido
-                                                }
-
-                                                saldoDisponibleInversor2 -= cantidadInvertir;
-                                                System.out.println("Inversión realizada con éxito.");
-                                            } else {
-                                                System.out.println("Cantidad inválida.");
-                                            }
-                                        } else {
-                                            System.out.println("Proyecto no encontrado.");
-                                        }
-                                    } else if (opcionProyectos == 4) {
-                                        break;
-                                    } else {
-                                        System.out.println("Opción inválida.");
-                                    }
-                                }
-                            } else if (opcion == 3) {
-                                System.out.println("\n--- Cartera Digital ---");
-                                System.out.println("Saldo disponible: " + saldoDisponibleInversor2);
-                                System.out.print("¿Cuánto deseas añadir a tu saldo? ");
-                                double cantidad = sc.nextDouble();
-                                if (cantidad > 0) {
-                                    saldoDisponibleInversor2 += cantidad;
-                                    System.out.println("Saldo añadido con éxito.");
-                                } else {
-                                    System.out.println("Cantidad inválida.");
-                                }
-                            } else if (opcion == 4) {
-                                System.out.println("\n--- Referidos ---");
-                                System.out.println("Referidos actuales: " + (referidosInversor2.isEmpty() ? "Ninguno" : referidosInversor2));
-                                System.out.print("Introduce el correo del nuevo referido: ");
-                                sc.nextLine();
-                                String nuevoReferido = sc.nextLine();
-                                referidosInversor2 += (referidosInversor2.isEmpty() ? "" : ", ") + nuevoReferido;
-                                System.out.println("Referido añadido con éxito.");
-                            } else if (opcion == 5) {
-                                int opcionConfiguracion = menuConfiguracion();
-                                if (opcionConfiguracion == 1) {
-                                    inversor2 = cambioNombre(inversor2);
-                                }
-                                if (opcionConfiguracion == 2) {
-                                    passInversor2 = cambioPassword(passInversor2);
-                                }
-                                if (opcionConfiguracion == 3) {
-                                    System.out.println("Volviendo...");
-                                }
-                            } else if (opcion == 6) {
-                                System.out.println("Sesión cerrada.");
-                                break;
-                            } else {
-                                System.out.println("Opción inválida.");
-                            }
-                        }
+                        menuInversor2(saldoDisponibleInversor2, referidosInversor2,
+                                invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2,
+                                cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2,
+                                nombreProyecto1, nombreProyecto2, nombreProyecto3,
+                                categoriaProyecto1, categoriaProyecto2, categoriaProyecto3,
+                                cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3,
+                                cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3,
+                                descripcionProyecto1, descripcionProyecto2, descripcionProyecto3,
+                                recompensa1_1, recompensa1_2, recompensa1_3,
+                                recompensa2_1, recompensa2_2, recompensa2_3,
+                                recompensa3_1, recompensa3_2, recompensa3_3);
                         // FIN MENÚ INVERSOR 2
 
                         break;
@@ -585,7 +241,7 @@ public class Main {
                     if (contrasena.equals(passAdmin)) {
                         System.out.println("Has accedido como Administrador.");
 
-                        verificacionCorreo();
+                        //verificacionCorreo();
 
                         // INICIO MENÚ ADMINISTRADOR
                         while (true) {

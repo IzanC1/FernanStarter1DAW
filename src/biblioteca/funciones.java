@@ -464,6 +464,426 @@ public class funciones {
             return sc.nextDouble();
         }
     }
+    //GESTOR
+
+    //FUNCIONES INVERSOR 1
+    // Menú del inversor 1
+    public static void menuInversor1(double saldoDisponibleInversor1, String referidosInversor1,
+                                     boolean invertidoEnProyecto1_1, boolean invertidoEnProyecto2_1, boolean invertidoEnProyecto3_1,
+                                     double cantidadFinanciada1_1, double cantidadFinanciada2_1, double cantidadFinanciada3_1,
+                                     String nombreProyecto1, String nombreProyecto2, String nombreProyecto3,
+                                     String categoriaProyecto1, String categoriaProyecto2, String categoriaProyecto3,
+                                     double cantidadNecesaria1, double cantidadNecesaria2, double cantidadNecesaria3,
+                                     double cantidadFinanciada1, double cantidadFinanciada2, double cantidadFinanciada3,
+                                     String descripcionProyecto1, String descripcionProyecto2, String descripcionProyecto3,
+                                     String recompensa1_1, String recompensa1_2, String recompensa1_3,
+                                     String recompensa2_1, String recompensa2_2, String recompensa2_3,
+                                     String recompensa3_1, String recompensa3_2, String recompensa3_3) {
+        while (true) {
+            System.out.println("\n\033[32m--- Menú Inversor 1 ---\033[0m");
+            System.out.println("1. Mis inversiones");
+            System.out.println("2. Proyectos Disponibles");
+            System.out.println("3. Cartera digital");
+            System.out.println("4. Referidos");
+            System.out.println("5. Configuración");
+            System.out.println("6. Cerrar sesión");
+            System.out.print("Selecciona una opción: ");
+            int opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    mostrarInversiones(new boolean[]{invertidoEnProyecto1_1, invertidoEnProyecto2_1, invertidoEnProyecto3_1},
+                            new double[]{cantidadFinanciada1_1, cantidadFinanciada2_1, cantidadFinanciada3_1});
+                    break;
+                case 2:
+                    menuProyectos(saldoDisponibleInversor1,
+                            new String[]{nombreProyecto1, nombreProyecto2, nombreProyecto3},
+                            new String[]{categoriaProyecto1, categoriaProyecto2, categoriaProyecto3},
+                            new double[]{cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3},
+                            new double[]{cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3},
+                            new String[]{descripcionProyecto1, descripcionProyecto2, descripcionProyecto3},
+                            new String[][]{{recompensa1_1, recompensa1_2, recompensa1_3},
+                                    {recompensa2_1, recompensa2_2, recompensa2_3},
+                                    {recompensa3_1, recompensa3_2, recompensa3_3}});
+                    break;
+                case 3:
+                    saldoDisponibleInversor1 = gestionarCartera(saldoDisponibleInversor1);
+                    break;
+                case 4:
+                    referidosInversor1 = gestionarReferidos(referidosInversor1);
+                    break;
+                case 5:
+                    configurarUsuario();
+                    break;
+                case 6:
+                    System.out.println("Sesión cerrada.");
+                    return;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        }
+    }
+
+    public static void mostrarInversiones(boolean[] invertido, double[] cantInvertida) {
+        System.out.println("\n--- Mis Inversiones ---");
+        boolean tieneInversion = false;
+        for (int i = 0; i < invertido.length; i++) {
+            if (invertido[i]) {
+                System.out.println("Inversión en Proyecto " + (i + 1) + " por: " + cantInvertida[i]);
+                tieneInversion = true;
+            }
+        }
+        if (!tieneInversion) {
+            System.out.println("No has realizado inversiones.");
+        }
+    }
+
+    public static double gestionarCartera(double saldo) {
+        System.out.println("\n--- Cartera Digital ---");
+        System.out.println("Saldo disponible: " + saldo);
+        System.out.print("¿Cuánto deseas añadir a tu saldo? ");
+        double cantidad = sc.nextDouble();
+        if (cantidad > 0) {
+            saldo += cantidad;
+            System.out.println("Saldo añadido con éxito.");
+        } else {
+            System.out.println("Cantidad inválida.");
+        }
+        return saldo;
+    }
+
+    public static String gestionarReferidos(String referidos) {
+        System.out.println("\n--- Referidos ---");
+        System.out.println("Referidos actuales: " + (referidos.isEmpty() ? "Ninguno" : referidos));
+        System.out.print("Introduce el correo del nuevo referido: ");
+        sc.nextLine();
+        String nuevoReferido = sc.nextLine();
+        referidos += (referidos.isEmpty() ? "" : ", ") + nuevoReferido;
+        System.out.println("Referido añadido con éxito.");
+        return referidos;
+    }
+
+    public static void configurarUsuario() {
+        System.out.println("\n--- Configuración ---");
+        System.out.println("1. Cambiar nombre de usuario");
+        System.out.println("2. Cambiar contraseña");
+        System.out.println("3. Volver");
+        System.out.print("Selecciona una opción: ");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                System.out.print("Introduce el nuevo nombre de usuario: ");
+                String nuevoNombre = sc.nextLine();
+                System.out.println("Nombre cambiado a: " + nuevoNombre);
+                break;
+            case 2:
+                System.out.print("Introduce la nueva contraseña: ");
+                String nuevaPass = sc.nextLine();
+                System.out.println("Contraseña cambiada.");
+                break;
+            case 3:
+                System.out.println("Volviendo al menú principal...");
+                break;
+            default:
+                System.out.println("Opción inválida.");
+        }
+    }
+
+    // Menú de proyectos
+    public static void menuProyectos(double saldo, String[] nombresProyectos, String[] categoriasProyectos,
+                                     double[] necesario, double[] financiado, String[] descripciones,
+                                     String[][] recompensas) {
+        while (true) {
+            System.out.println("\n--- Proyectos Disponibles ---");
+            System.out.println("1. Listar proyectos");
+            System.out.println("2. Ver detalles de un proyecto");
+            System.out.println("3. Invertir en un proyecto");
+            System.out.println("4. Volver al menú principal");
+            System.out.print("Selecciona una opción: ");
+            int opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    listarProyectos(nombresProyectos, categoriasProyectos, necesario, financiado);
+                    break;
+                case 2:
+                    verDetallesProyecto(nombresProyectos, categoriasProyectos, descripciones, necesario, financiado, recompensas);
+                    break;
+                case 3:
+                    saldo = invertirEnProyecto(saldo, necesario, financiado);
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        }
+    }
+
+    private static void listarProyectos(String[] nombres, String[] categorias, double[] necesario, double[] financiado) {
+        System.out.println("\n--- Listado de Proyectos ---");
+        System.out.printf("%-3s | %-20s | %-12s | %-10s | %-10s\n", "N°", "Proyecto", "Categoría", "Necesario", "Financiado");
+        for (int i = 0; i < nombres.length; i++) {
+            System.out.printf("%-3d | %-20s | %-12s | %-10.2f | %-10.2f\n", i + 1, nombres[i], categorias[i], necesario[i], financiado[i]);
+        }
+    }
+
+    private static void verDetallesProyecto(String[] nombres, String[] categorias, String[] descripciones,
+                                            double[] necesario, double[] financiado, String[][] recompensas) {
+        System.out.print("\nSelecciona el número del proyecto (1-" + nombres.length + "): ");
+        int proyecto = sc.nextInt() - 1;
+        if (proyecto >= 0 && proyecto < nombres.length) {
+            mostrarDetallesProyecto(nombres[proyecto], categorias[proyecto], descripciones[proyecto],
+                    necesario[proyecto], financiado[proyecto], recompensas[proyecto]);
+        } else {
+            System.out.println("Proyecto no encontrado.");
+        }
+    }
+
+    private static double invertirEnProyecto(double saldo, double[] necesario, double[] financiado) {
+        System.out.print("\nSelecciona el número del proyecto para invertir (1-" + necesario.length + "): ");
+        int proyecto = sc.nextInt() - 1;
+        if (proyecto >= 0 && proyecto < necesario.length) {
+            double cantidadRestante = necesario[proyecto] - financiado[proyecto];
+            System.out.println("Cantidad restante para financiar: " + cantidadRestante);
+            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldo + "): ");
+            double cantidadInvertir = sc.nextDouble();
+
+            if (cantidadInvertir > 0 && cantidadInvertir <= saldo && cantidadInvertir <= cantidadRestante) {
+                financiado[proyecto] += cantidadInvertir;
+                saldo -= cantidadInvertir;
+                System.out.println("Inversión realizada con éxito.");
+            } else {
+                System.out.println("Cantidad inválida o insuficiente.");
+            }
+        } else {
+            System.out.println("Proyecto no encontrado.");
+        }
+        return saldo;
+    }
+
+    // Método para mostrar detalles del proyecto
+    private static void mostrarDetallesProyecto(String nombre, String categoria, String descripcion,
+                                                double necesario, double financiado, String[] recompensas) {
+        System.out.println("\n--- Detalles del Proyecto ---");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Categoría: " + categoria);
+        System.out.println("Descripción: " + descripcion);
+        System.out.println("Cantidad Necesaria: " + necesario);
+        System.out.println("Cantidad Financiada: " + financiado);
+        System.out.println("Cantidad Restante: " + (necesario - financiado));
+        System.out.println("*** RECOMPENSAS ***");
+        for (int i = 0; i < recompensas.length; i++) {
+            System.out.println("Recompensa " + (i + 1) + ": " + recompensas[i]);
+        }
+    }
+    //FUNCIONES INVERSOR 1
+
+    //FUNCIONES INVERSOR 2
+    public static void menuInversor2(double saldoDisponibleInversor2, String referidosInversor2,
+                                     boolean invertidoEnProyecto1_2, boolean invertidoEnProyecto2_2, boolean invertidoEnProyecto3_2,
+                                     double cantidadFinanciada1_2, double cantidadFinanciada2_2, double cantidadFinanciada3_2,
+                                     String nombreProyecto1, String nombreProyecto2, String nombreProyecto3,
+                                     String categoriaProyecto1, String categoriaProyecto2, String categoriaProyecto3,
+                                     double cantidadNecesaria1, double cantidadNecesaria2, double cantidadNecesaria3,
+                                     double cantidadFinanciada1, double cantidadFinanciada2, double cantidadFinanciada3,
+                                     String descripcionProyecto1, String descripcionProyecto2, String descripcionProyecto3,
+                                     String recompensa1_1, String recompensa1_2, String recompensa1_3,
+                                     String recompensa2_1, String recompensa2_2, String recompensa2_3,
+                                     String recompensa3_1, String recompensa3_2, String recompensa3_3) {
+        while (true) {
+            System.out.println("\n\033[32m--- Menú Inversor 2 ---\033[0m");
+            System.out.println("1. Mis inversiones");
+            System.out.println("2. Proyectos Disponibles");
+            System.out.println("3. Cartera digital");
+            System.out.println("4. Referidos");
+            System.out.println("5. Configuración");
+            System.out.println("6. Cerrar sesión");
+            System.out.print("Selecciona una opción: ");
+            int opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    mostrarInversionesInversor2(invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2,
+                            cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2,
+                            nombreProyecto1, nombreProyecto2, nombreProyecto3);
+                    break;
+                case 2:
+                    menuProyectosInversor2(saldoDisponibleInversor2,
+                            new String[]{nombreProyecto1, nombreProyecto2, nombreProyecto3},
+                            new String[]{categoriaProyecto1, categoriaProyecto2, categoriaProyecto3},
+                            new double[]{cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3},
+                            new double[]{cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3},
+                            new String[]{descripcionProyecto1, descripcionProyecto2, descripcionProyecto3},
+                            new String[][]{{recompensa1_1, recompensa1_2, recompensa1_3},
+                                    {recompensa2_1, recompensa2_2, recompensa2_3},
+                                    {recompensa3_1, recompensa3_2, recompensa3_3}},
+                            new String[]{"fechaInicio1", "fechaInicio2", "fechaInicio3"},
+                            new String[]{"fechaFin1", "fechaFin2", "fechaFin3"},
+                            new boolean[]{invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2},
+                            new double[]{cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2});
+                    break;
+                case 3:
+                    saldoDisponibleInversor2 = gestionarCarteraInversor2(saldoDisponibleInversor2);
+                    break;
+                case 4:
+                    referidosInversor2 = gestionarReferidosInversor2(referidosInversor2);
+                    break;
+                case 5:
+                    configurarUsuarioInversor2("inversor2", "passInversor2");
+                    break;
+                case 6:
+                    System.out.println("Sesión cerrada.");
+                    return;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        }
+    }
+
+    // Mostrar Inversiones para Inversor 2
+    public static void mostrarInversionesInversor2(boolean invertidoEnProyecto1_2, boolean invertidoEnProyecto2_2, boolean invertidoEnProyecto3_2,
+                                                   double cantidadFinanciada1_2, double cantidadFinanciada2_2, double cantidadFinanciada3_2,
+                                                   String nombreProyecto1, String nombreProyecto2, String nombreProyecto3) {
+        System.out.println("\n--- Mis Inversiones ---");
+        if (invertidoEnProyecto1_2) System.out.println("Inversión en " + nombreProyecto1 + " por " + cantidadFinanciada1_2);
+        if (invertidoEnProyecto2_2) System.out.println("Inversión en " + nombreProyecto2 + " por " + cantidadFinanciada2_2);
+        if (invertidoEnProyecto3_2) System.out.println("Inversión en " + nombreProyecto3 + " por " + cantidadFinanciada3_2);
+        if (!invertidoEnProyecto1_2 && !invertidoEnProyecto2_2 && !invertidoEnProyecto3_2) {
+            System.out.println("Aún no has realizado ninguna inversión.");
+        }
+    }
+
+    // Menú de Proyectos para Inversor 2
+    public static void menuProyectosInversor2(double saldoDisponibleInversor2,
+                                              String[] nombresProyectos, String[] categoriasProyectos,
+                                              double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                              String[] descripciones, String[][] recompensas,
+                                              String[] fechasInicio, String[] fechasFin,
+                                              boolean[] invertidoEnProyecto2, double[] cantidadFinanciada2) {
+        while (true) {
+            System.out.println("\n--- Proyectos Disponibles ---");
+            System.out.println("1. Listar proyectos");
+            System.out.println("2. Ver detalles de un proyecto");
+            System.out.println("3. Invertir en un proyecto");
+            System.out.println("4. Volver al menú principal");
+            System.out.print("Selecciona una opción: ");
+            int opcionProyectos = sc.nextInt();
+
+            switch (opcionProyectos) {
+                case 1:
+                    listarProyectos(nombresProyectos, categoriasProyectos, cantidadNecesaria, cantidadFinanciada);
+                    break;
+                case 2:
+                    verDetallesProyectoInversor2(nombresProyectos, categoriasProyectos, descripciones, cantidadNecesaria, cantidadFinanciada, recompensas, fechasInicio, fechasFin);
+                    break;
+                case 3:
+                    saldoDisponibleInversor2 = invertirEnProyectoInversor2(saldoDisponibleInversor2, cantidadNecesaria, cantidadFinanciada, invertidoEnProyecto2, cantidadFinanciada2);
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        }
+    }
+
+    private static void verDetallesProyectoInversor2(String[] nombres, String[] categorias, String[] descripciones,
+                                                     double[] necesario, double[] financiado, String[][] recompensas,
+                                                     String[] fechasInicio, String[] fechasFin) {
+        System.out.print("\nSelecciona el número del proyecto (1-3): ");
+        int proyectoSeleccionado = sc.nextInt() - 1;
+        if (proyectoSeleccionado >= 0 && proyectoSeleccionado < nombres.length) {
+            System.out.println("\n--- Detalles del Proyecto ---");
+            System.out.println("Nombre: " + nombres[proyectoSeleccionado]);
+            System.out.println("Categoría: " + categorias[proyectoSeleccionado]);
+            System.out.println("Descripción: " + descripciones[proyectoSeleccionado]);
+            System.out.println("Cantidad Necesaria: " + necesario[proyectoSeleccionado]);
+            System.out.println("Cantidad Financiada: " + financiado[proyectoSeleccionado]);
+            System.out.println("Cantidad Restante: " + (necesario[proyectoSeleccionado] - financiado[proyectoSeleccionado]));
+            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechasInicio[proyectoSeleccionado]);
+            System.out.println("Fecha fin de cierre de las inversiones: " + fechasFin[proyectoSeleccionado]);
+            System.out.println("*** RECOMPENSAS ***");
+            for (int i = 0; i < recompensas[proyectoSeleccionado].length; i++) {
+                System.out.println("Recompensa " + (i + 1) + ": " + recompensas[proyectoSeleccionado][i]);
+            }
+            int porcentaje = (int) ((financiado[proyectoSeleccionado] / necesario[proyectoSeleccionado]) * 100);
+            graficoBarras(porcentaje);
+            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+            sc.nextLine();
+            sc.nextLine();
+        } else {
+            System.out.println("Proyecto no encontrado.");
+        }
+    }
+
+    private static double invertirEnProyectoInversor2(double saldoDisponibleInversor2, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                                      boolean[] invertidoEnProyecto2, double[] cantidadFinanciada2) {
+        System.out.print("\nSelecciona el número del proyecto para invertir (1-3): ");
+
+        int proyectoInvertir = sc.nextInt() - 1;
+        if (proyectoInvertir >= 0 && proyectoInvertir < cantidadNecesaria.length) {
+            double cantidadRestante = cantidadNecesaria[proyectoInvertir] - cantidadFinanciada[proyectoInvertir];
+
+            System.out.println("Cantidad restante para financiar: " + cantidadRestante);
+            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldoDisponibleInversor2 + "): ");
+            double cantidadInvertir = sc.nextDouble();
+
+            if (cantidadInvertir > 0 && cantidadInvertir <= saldoDisponibleInversor2 && cantidadInvertir <= cantidadRestante) {
+                cantidadFinanciada[proyectoInvertir] += cantidadInvertir;
+                cantidadFinanciada2[proyectoInvertir] += cantidadInvertir;
+                invertidoEnProyecto2[proyectoInvertir] = true;
+                saldoDisponibleInversor2 -= cantidadInvertir;
+                System.out.println("Inversión realizada con éxito.");
+            } else {
+                System.out.println("Cantidad inválida.");
+            }
+        } else {
+            System.out.println("Proyecto no encontrado.");
+        }
+        return saldoDisponibleInversor2;
+    }
+
+    // Gestionar Cartera para Inversor 2
+    public static double gestionarCarteraInversor2(double saldoDisponibleInversor2) {
+        System.out.println("\n--- Cartera Digital ---");
+        System.out.println("Saldo disponible: " + saldoDisponibleInversor2);
+        System.out.print("¿Cuánto deseas añadir a tu saldo? ");
+        double cantidad = sc.nextDouble();
+        if (cantidad > 0) {
+            saldoDisponibleInversor2 += cantidad;
+            System.out.println("Saldo añadido con éxito.");
+        } else {
+            System.out.println("Cantidad inválida.");
+        }
+        return saldoDisponibleInversor2;
+    }
+
+    // Gestionar Referidos para Inversor 2
+    public static String gestionarReferidosInversor2(String referidosInversor2) {
+        System.out.println("\n--- Referidos ---");
+        System.out.println("Referidos actuales: " + (referidosInversor2.isEmpty() ? "Ninguno" : referidosInversor2));
+        System.out.print("Introduce el correo del nuevo referido: ");
+        sc.nextLine();
+        String nuevoReferido = sc.nextLine();
+        referidosInversor2 += (referidosInversor2.isEmpty() ? "" : ", ") + nuevoReferido;
+        System.out.println("Referido añadido con éxito.");
+        return referidosInversor2;
+    }
+
+    // Configuración de Usuario para Inversor 2
+    public static void configurarUsuarioInversor2(String inversor2, String passInversor2) {
+        int opcionConfiguracion = menuConfiguracion();
+        if (opcionConfiguracion == 1) {
+            inversor2 = cambioNombre(inversor2);
+        }
+        if (opcionConfiguracion == 2) {
+            passInversor2 = cambioPassword(passInversor2);
+        }
+        if (opcionConfiguracion == 3) {
+            System.out.println("Volviendo...");
+        }
+    }
+        //FUNCIONES INVERSOR 2
 }
-
-
