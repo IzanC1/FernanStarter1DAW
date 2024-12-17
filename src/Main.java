@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import static biblioteca.funciones.*;
-import static biblioteca.funciones.GestorProyectos.*;
 import static biblioteca.funcionesCorreo.*;
 
 public class Main {
@@ -405,7 +404,8 @@ public class Main {
                             } else {
                                 System.out.println("Opción inválida.");
                             }
-                        } // FIN MENÚ ADMINISTRADOR
+                        }
+                        // FIN MENÚ ADMINISTRADOR
                         break;
                     } else {
                         System.out.println("Contraseña incorrecta.");

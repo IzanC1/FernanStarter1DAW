@@ -141,20 +141,6 @@ public class funciones {
 
 
     //GESTOR
-    public class GestorProyectos {
-
-        static String nombreProyecto1, nombreProyecto2, nombreProyecto3;
-        static String descripcionProyecto1, descripcionProyecto2, descripcionProyecto3;
-        static String categoriaProyecto1, categoriaProyecto2, categoriaProyecto3;
-        static String fechaInicioProyecto1, fechaInicioProyecto2, fechaInicioProyecto3;
-        static String fechaFinProyecto1, fechaFinProyecto2, fechaFinProyecto3;
-        static String recompensa1_1, recompensa2_1, recompensa3_1;
-        static String recompensa1_2, recompensa2_2, recompensa3_2;
-        static String recompensa1_3, recompensa2_3, recompensa3_3;
-        static double cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3;
-        static double cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3;
-        static int proyectosCreados = 0;
-
         public static int menuPrincipalGestor() {
             System.out.println("\n\033[34m--- Menú Gestor ---\033[0m");
             System.out.println("1. Mostrar todos los proyectos de la plataforma");
@@ -463,7 +449,6 @@ public class funciones {
             System.out.print(mensaje);
             return sc.nextDouble();
         }
-    }
     //GESTOR
 
     //FUNCIONES INVERSOR 1
