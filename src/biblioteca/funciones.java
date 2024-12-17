@@ -166,11 +166,11 @@ public class funciones {
             categoriaProyecto[0] = obtenerEntrada("Categoría del proyecto: ");
             fechaInicio[0] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
             fechaFin[0] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
-            cantidadNecesaria[0] = obtenerDouble("Cantidad necesaria: ");
-            cantidadFinanciada[0] = obtenerDouble("Cantidad financiada: ");
             recompensa1[0] = obtenerEntrada("Recompensa 1: ");
             recompensa2[0] = obtenerEntrada("Recompensa 2: ");
             recompensa3[0] = obtenerEntrada("Recompensa 3: ");
+            cantidadNecesaria[0] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[0] = obtenerDouble("Cantidad financiada: ");
 
             proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
@@ -181,11 +181,11 @@ public class funciones {
             categoriaProyecto[1] = obtenerEntrada("Categoría del proyecto: ");
             fechaInicio[1] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
             fechaFin[1] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
-            cantidadNecesaria[1] = obtenerDouble("Cantidad necesaria: ");
-            cantidadFinanciada[1] = obtenerDouble("Cantidad financiada: ");
             recompensa1[1] = obtenerEntrada("Recompensa 1: ");
             recompensa2[1] = obtenerEntrada("Recompensa 2: ");
             recompensa3[1] = obtenerEntrada("Recompensa 3: ");
+            cantidadNecesaria[1] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[1] = obtenerDouble("Cantidad financiada: ");
 
             proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
@@ -196,11 +196,11 @@ public class funciones {
             categoriaProyecto[2] = obtenerEntrada("Categoría del proyecto: ");
             fechaInicio[2] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
             fechaFin[2] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
-            cantidadNecesaria[2] = obtenerDouble("Cantidad necesaria: ");
-            cantidadFinanciada[2] = obtenerDouble("Cantidad financiada: ");
             recompensa1[2] = obtenerEntrada("Recompensa 1: ");
             recompensa2[2] = obtenerEntrada("Recompensa 2: ");
             recompensa3[2] = obtenerEntrada("Recompensa 3: ");
+            cantidadNecesaria[2] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[2] = obtenerDouble("Cantidad financiada: ");
 
             proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
