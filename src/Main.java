@@ -117,7 +117,7 @@ public class Main {
                         System.out.println("Has accedido como Gestor.");
                         intentosGestor = 3;
 
-                        //verificacionCorreo();
+                        verificacionCorreo();
 
                         // INICIO MENÚ GESTOR
                         while (true) {
