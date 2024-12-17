@@ -200,6 +200,7 @@ public class funciones {
             System.out.println("Cantidad necesaria: " + cantidadNecesaria);
             System.out.println("Cantidad financiada: " + cantidadFinanciada);
             int porcentaje = (int) ((cantidadFinanciada / cantidadNecesaria) * 100);
+            graficoBarras(porcentaje);
             System.out.println("Progreso: " + porcentaje + "%");
         }
 

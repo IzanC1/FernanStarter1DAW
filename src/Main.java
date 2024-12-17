@@ -104,7 +104,7 @@ public class Main {
                         System.out.println("Has accedido como Gestor.");
                         intentosGestor = 3;
 
-                        verificacionCorreo();
+                        //verificacionCorreo();
 
                         // INICIO MENÚ GESTOR
                         while (true) {
@@ -121,7 +121,6 @@ public class Main {
 
                             } else if (opcion == 3) {
                                 modificarProyecto();
-                                System.out.println("Proyecto modificado con éxito.");
 
                             } else if (opcion == 4) {
                                 int opcionConfiguracion = menuConfiguracion();
