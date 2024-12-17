@@ -10,33 +10,34 @@ import java.util.Scanner;
 
 public class funcionesCorreo {
 
-    public static void verificacionCorreo () {
+    public static void verificacionCorreo() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("VERIFICACIÓN. Revisa el código que hemos enviado a tu gmail.");
-        int codigoVerificacion = (int) (Math.random()*8999+1000);
+        int codigoVerificacion = (int) (Math.random() * 8999 + 1000);
 
         String destinatario = "isalexis.design@gmail.com";
         String asunto = "Correo de verificación";
-        String cuerpo = "<h1>"+codigoVerificacion+"</h1>" +
+        String cuerpo = "<h1>" + codigoVerificacion + "</h1>" +
                 "<p>IMPORTANTE: <strong>NO COMPARTAS ESTE CÓDIGO</strong></p>";
 
         enviarConGMail(destinatario, asunto, cuerpo);
 
-        for (int i=3; i>0; i--){
+        for (int i = 3; i > 0; i--) {
             System.out.println("Introduce el código de verificación:");
             int codigoIntroducidoPorUsuario = sc.nextInt();
 
-            if (codigoIntroducidoPorUsuario == codigoVerificacion){
+            if (codigoIntroducidoPorUsuario == codigoVerificacion) {
                 System.out.println("Bienvenido al sistema.");
                 break;
             } else {
                 System.out.println("\033[31mCódigo de verificación incorrecto.\033[0m");
-                System.out.println("Te quedan "+(i-1)+" intentos.");
+                System.out.println("Te quedan " + (i - 1) + " intentos.");
             }
         }
     }
-    public static void enviarConGMail (String destinatario, String asunto, String cuerpo) {
+
+    public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         final String remitente = "alexis.lopez.1506@fernando3martos.com";
         final String clave = "gphj dsbt qryu ugvs";
         Properties props = System.getProperties();
@@ -58,8 +59,7 @@ public class funcionesCorreo {
             transport.connect("smtp.gmail.com", remitente, clave);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-        }
-        catch (Exception me) {
+        } catch (Exception me) {
             me.printStackTrace();
         }
     }

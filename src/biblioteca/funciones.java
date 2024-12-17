@@ -1,9 +1,12 @@
 package biblioteca;
+
 import java.util.Scanner;
+
 public class funciones {
 
-    public static int menuPrincipalAdmin (){
-        Scanner sc = new Scanner (System.in);
+    private static final Scanner sc = new Scanner(System.in);
+
+    public static int menuPrincipalAdmin() {
         System.out.println("\n\033[38;5;214m--- Menú Administrador ---\033[39m");
         System.out.println("1. Panel de control");
         System.out.println("2. Mostrar todos los proyectos de la plataforma");
@@ -16,8 +19,7 @@ public class funciones {
         return opcion;
     }
 
-    public static void panelDeControl (boolean[] bloqueados) {
-        Scanner sc = new Scanner(System.in);
+    public static void panelDeControl(boolean[] bloqueados) {
         int opcionPanelControl;
         do {
             System.out.println("\n--- Panel de Control ---");
@@ -31,8 +33,8 @@ public class funciones {
 
         } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
     }
-    public static void bloquearDesbloquear (int opcionPanelControl, boolean[] bloqueados){
-        Scanner sc = new Scanner(System.in);
+
+    public static void bloquearDesbloquear(int opcionPanelControl, boolean[] bloqueados) {
         switch (opcionPanelControl) {
             case 1:
                 int opcionBloqueo;
@@ -94,7 +96,7 @@ public class funciones {
         }
     }
 
-    public static void graficoBarras (int porcentaje){
+    public static void graficoBarras(int porcentaje) {
         System.out.print("\033[35m[");
         for (int i = 0; i <= 100; i++) {
             if (i <= porcentaje) {
@@ -106,8 +108,7 @@ public class funciones {
         System.out.print("]\033[39m");
     }
 
-    public static int menuConfiguracion (){
-        Scanner sc = new Scanner(System.in);
+    public static int menuConfiguracion() {
 
         System.out.println("\n--- Configuración ---");
         System.out.println("¿Que opción desea?");
@@ -119,8 +120,8 @@ public class funciones {
 
         return opcionConfiguracion;
     }
-    public static String cambioNombre (String nombreActual){
-        Scanner sc = new Scanner(System.in);
+
+    public static String cambioNombre(String nombreActual) {
 
         System.out.println("Ingrese su nuevo nombre de usuario");
         String nuevoNombre = sc.nextLine().toLowerCase().trim();
@@ -128,8 +129,8 @@ public class funciones {
 
         return nuevoNombre;
     }
-    public static String cambioPassword (String passwordActual){
-        Scanner sc = new Scanner(System.in);
+
+    public static String cambioPassword(String passwordActual) {
 
         System.out.println("Ingrese la nueva contraseña");
         String passwordNueva = sc.nextLine().toLowerCase().trim();
@@ -153,7 +154,6 @@ public class funciones {
         static double cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3;
         static double cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3;
         static int proyectosCreados = 0;
-        static Scanner sc = new Scanner(System.in);
 
         public static int menuPrincipalGestor() {
             System.out.println("\n\033[34m--- Menú Gestor ---\033[0m");
@@ -357,6 +357,7 @@ public class funciones {
 
             System.out.println("Proyecto modificado con éxito.");
         }
+
         public static void guardarProyecto(String nombre, String descripcion, String categoria, String fechaInicio, String fechaFin,
                                            String recompensa1, String recompensa2, String recompensa3, double cantidadNecesaria, double cantidadFinanciada) {
             if (proyectosCreados == 0) {
@@ -452,6 +453,7 @@ public class funciones {
             else if (proyectoNum == 2) cantidadFinanciada2 = nuevaCantidad;
             else cantidadFinanciada3 = nuevaCantidad;
         }
+
         public static String obtenerEntrada(String mensaje) {
             System.out.print(mensaje);
             return sc.nextLine();

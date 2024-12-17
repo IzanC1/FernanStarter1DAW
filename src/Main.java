@@ -3,6 +3,7 @@ import java.util.Scanner;
 import static biblioteca.funciones.*;
 import static biblioteca.funciones.GestorProyectos.*;
 import static biblioteca.funcionesCorreo.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -42,7 +43,7 @@ public class Main {
         int intentosInversor1 = 3;
         int intentosInversor2 = 3;
 
-        boolean [] bloqueados = {false, false, false};
+        boolean[] bloqueados = {false, false, false};
         // POSICIÓN DE USUARIO EN LOS ARRAYS: Gestor -> 0 / Inversor1 -> 1 / Inversor2 -> 2
 
         //Variables de proyectos
@@ -593,12 +594,12 @@ public class Main {
                             if (opcion == 1) {
 
                                 panelDeControl(bloqueados);
-                                if (bloqueados[0]) intentosGestor=0;
-                                else intentosGestor=3;
-                                if (bloqueados[1]) intentosInversor1=0;
-                                else intentosInversor1=3;
-                                if (bloqueados[2]) intentosInversor2=0;
-                                else intentosInversor2=3;
+                                if (bloqueados[0]) intentosGestor = 0;
+                                else intentosGestor = 3;
+                                if (bloqueados[1]) intentosInversor1 = 0;
+                                else intentosInversor1 = 3;
+                                if (bloqueados[2]) intentosInversor2 = 0;
+                                else intentosInversor2 = 3;
 
                             } else if (opcion == 2) {
                                 System.out.println("\n--- Proyectos ---");
