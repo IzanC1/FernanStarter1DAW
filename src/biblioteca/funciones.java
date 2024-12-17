@@ -139,7 +139,6 @@ public class funciones {
         return passwordNueva;
     }
 
-
     //GESTOR
         public static int menuPrincipalGestor() {
             System.out.println("\n\033[34m--- Menú Gestor ---\033[0m");
@@ -154,234 +153,199 @@ public class funciones {
             return opcion;
         }
 
-        public static void mostrarProyectos() {
-            if (proyectosCreados == 0) {
-                System.out.println("No hay proyectos.");
-            } else {
-                if (proyectosCreados >= 1) mostrarProyecto(1);
-                if (proyectosCreados >= 2) mostrarProyecto(2);
-                if (proyectosCreados >= 3) mostrarProyecto(3);
-            }
+    public static void crearProyecto(int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                     String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                     String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
+        if (proyectosCreados[0] >= 3) {
+            System.out.println("No se pueden crear más proyectos.");
+            return;
         }
+        if (proyectosCreados[0] == 0){
+            nombreProyecto[0] = obtenerEntrada("Nombre del proyecto: ");
+            descripcionProyecto[0] = obtenerEntrada("Descripción del proyecto: ");
+            categoriaProyecto[0] = obtenerEntrada("Categoría del proyecto: ");
+            fechaInicio[0] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
+            fechaFin[0] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
+            cantidadNecesaria[0] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[0] = obtenerDouble("Cantidad financiada: ");
+            recompensa1[0] = obtenerEntrada("Recompensa 1: ");
+            recompensa2[0] = obtenerEntrada("Recompensa 2: ");
+            recompensa3[0] = obtenerEntrada("Recompensa 3: ");
 
-        public static void mostrarProyecto(int proyectoNum) {
-            String nombre = obtenerNombre(proyectoNum);
-            String descripcion = obtenerDescripcion(proyectoNum);
-            String categoria = obtenerCategoria(proyectoNum);
-            String fechaInicio = obtenerFechaInicio(proyectoNum);
-            String fechaFin = obtenerFechaFin(proyectoNum);
-            String recompensa1 = obtenerRecompensa(proyectoNum, 1);
-            String recompensa2 = obtenerRecompensa(proyectoNum, 2);
-            String recompensa3 = obtenerRecompensa(proyectoNum, 3);
-            double cantidadNecesaria = obtenerCantidadNecesaria(proyectoNum);
-            double cantidadFinanciada = obtenerCantidadFinanciada(proyectoNum);
-
-            System.out.println("Proyecto " + proyectoNum + ":");
-            System.out.println("Nombre: " + nombre);
-            System.out.println("Descripción: " + descripcion);
-            System.out.println("Categoría: " + categoria);
-            System.out.println("Fecha de inicio: " + fechaInicio);
-            System.out.println("Fecha de fin: " + fechaFin);
-            System.out.println("Recompensas: " + recompensa1 + ", " + recompensa2 + ", " + recompensa3);
-            System.out.println("Cantidad necesaria: " + cantidadNecesaria);
-            System.out.println("Cantidad financiada: " + cantidadFinanciada);
-            int porcentaje = (int) ((cantidadFinanciada / cantidadNecesaria) * 100);
-            graficoBarras(porcentaje);
-            System.out.println("Progreso: " + porcentaje + "%");
-        }
-
-        public static String obtenerNombre(int proyectoNum) {
-            if (proyectoNum == 1) return nombreProyecto1;
-            if (proyectoNum == 2) return nombreProyecto2;
-            return nombreProyecto3;
-        }
-
-        public static String obtenerDescripcion(int proyectoNum) {
-            if (proyectoNum == 1) return descripcionProyecto1;
-            if (proyectoNum == 2) return descripcionProyecto2;
-            return descripcionProyecto3;
-        }
-
-        public static String obtenerCategoria(int proyectoNum) {
-            if (proyectoNum == 1) return categoriaProyecto1;
-            if (proyectoNum == 2) return categoriaProyecto2;
-            return categoriaProyecto3;
-        }
-
-        public static String obtenerFechaInicio(int proyectoNum) {
-            if (proyectoNum == 1) return fechaInicioProyecto1;
-            if (proyectoNum == 2) return fechaInicioProyecto2;
-            return fechaInicioProyecto3;
-        }
-
-        public static String obtenerFechaFin(int proyectoNum) {
-            if (proyectoNum == 1) return fechaFinProyecto1;
-            if (proyectoNum == 2) return fechaFinProyecto2;
-            return fechaFinProyecto3;
-        }
-
-        public static String obtenerRecompensa(int proyectoNum, int recompensaNum) {
-            if (proyectoNum == 1) {
-                if (recompensaNum == 1) return recompensa1_1;
-                if (recompensaNum == 2) return recompensa2_1;
-                return recompensa3_1;
-            } else if (proyectoNum == 2) {
-                if (recompensaNum == 1) return recompensa1_2;
-                if (recompensaNum == 2) return recompensa2_2;
-                return recompensa3_2;
-            } else {
-                if (recompensaNum == 1) return recompensa1_3;
-                if (recompensaNum == 2) return recompensa2_3;
-                return recompensa3_3;
-            }
-        }
-
-        public static double obtenerCantidadNecesaria(int proyectoNum) {
-            if (proyectoNum == 1) return cantidadNecesaria1;
-            if (proyectoNum == 2) return cantidadNecesaria2;
-            return cantidadNecesaria3;
-        }
-
-        public static double obtenerCantidadFinanciada(int proyectoNum) {
-            if (proyectoNum == 1) return cantidadFinanciada1;
-            if (proyectoNum == 2) return cantidadFinanciada2;
-            return cantidadFinanciada3;
-        }
-
-        public static void crearProyecto() {
-            if (proyectosCreados >= 3) {
-                System.out.println("No se pueden crear más proyectos.");
-                return;
-            }
-
-            String nombre = obtenerEntrada("Nombre del proyecto: ");
-            String descripcion = obtenerEntrada("Descripción del proyecto: ");
-            String categoria = obtenerEntrada("Categoría del proyecto: ");
-            String fechaInicio = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
-            String fechaFin = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
-            String recompensa1 = obtenerEntrada("Recompensa 1: ");
-            String recompensa2 = obtenerEntrada("Recompensa 2: ");
-            String recompensa3 = obtenerEntrada("Recompensa 3: ");
-            double cantidadNecesaria = obtenerDouble("Cantidad necesaria: ");
-            double cantidadFinanciada = obtenerDouble("Cantidad financiada: ");
-
-            guardarProyecto(nombre, descripcion, categoria, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3, cantidadNecesaria, cantidadFinanciada);
-            proyectosCreados++;
+            proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
         }
+        else if (proyectosCreados[0] == 1){
+            nombreProyecto[1] = obtenerEntrada("Nombre del proyecto: ");
+            descripcionProyecto[1] = obtenerEntrada("Descripción del proyecto: ");
+            categoriaProyecto[1] = obtenerEntrada("Categoría del proyecto: ");
+            fechaInicio[1] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
+            fechaFin[1] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
+            cantidadNecesaria[1] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[1] = obtenerDouble("Cantidad financiada: ");
+            recompensa1[1] = obtenerEntrada("Recompensa 1: ");
+            recompensa2[1] = obtenerEntrada("Recompensa 2: ");
+            recompensa3[1] = obtenerEntrada("Recompensa 3: ");
 
-        public static void modificarProyecto() {
-            if (proyectosCreados == 0) {
-                System.out.println("No hay proyectos para modificar.");
-                return;
-            }
+            proyectosCreados[0]++;
+            System.out.println("Proyecto creado con éxito.");
+        }
+        else if (proyectosCreados[0] == 2){
+            nombreProyecto[2] = obtenerEntrada("Nombre del proyecto: ");
+            descripcionProyecto[2] = obtenerEntrada("Descripción del proyecto: ");
+            categoriaProyecto[2] = obtenerEntrada("Categoría del proyecto: ");
+            fechaInicio[2] = obtenerEntrada("Fecha de inicio (dd/mm/aaaa): ");
+            fechaFin[2] = obtenerEntrada("Fecha de fin (dd/mm/aaaa): ");
+            cantidadNecesaria[2] = obtenerDouble("Cantidad necesaria: ");
+            cantidadFinanciada[2] = obtenerDouble("Cantidad financiada: ");
+            recompensa1[2] = obtenerEntrada("Recompensa 1: ");
+            recompensa2[2] = obtenerEntrada("Recompensa 2: ");
+            recompensa3[2] = obtenerEntrada("Recompensa 3: ");
 
-            System.out.println("Seleccione el proyecto a modificar:");
-            for (int i = 1; i <= proyectosCreados; i++) {
-                System.out.println(i + ". " + obtenerNombre(i));
-            }
+            proyectosCreados[0]++;
+            System.out.println("Proyecto creado con éxito.");
+        }
+    }
 
-            int proyectoNum = sc.nextInt();
-            sc.nextLine();
+    public static void mostrarProyectos (int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                         String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                         String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3){
 
-            if (proyectoNum < 1 || proyectoNum > proyectosCreados) {
-                System.out.println("Proyecto no válido.");
-                return;
-            }
+        System.out.println("\nMostrando todos los proyectos de la plataforma...");
+        if (proyectosCreados[0] == 0) {
+            System.out.println("No hay proyectos creados aun");
+        }
+        if (proyectosCreados[0] >= 1) {
+            System.out.println("\nProyecto 1: ");
+            System.out.println("Nombre: " + nombreProyecto[0]);
+            System.out.println("Descripción: " + descripcionProyecto[0]);
+            System.out.println("Categoría: " + categoriaProyecto[0]);
+            System.out.println("Cantidad necesaria: " + cantidadNecesaria[0]);
+            System.out.println("Cantidad financiada: " + cantidadFinanciada[0]);
+            System.out.println("Fecha de inicio: " + fechaInicio[0]);
+            System.out.println("Fecha de fin: " + fechaFin[0]);
+            System.out.println("Recompensas: " + recompensa1[0] + ", " + recompensa2[0] + ", " + recompensa3[0]);
+            // BARRA DE PROGRESO PROYECTO 1
+            int porcentaje = (int) ((cantidadFinanciada[0] / cantidadNecesaria[0]) * 100);
+            graficoBarras(porcentaje);
+            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+        }
+        if (proyectosCreados[0] >= 2) {
+            System.out.println("\nProyecto 2:");
+            System.out.println("Nombre: " + nombreProyecto[1]);
+            System.out.println("Descripción: " + descripcionProyecto[1]);
+            System.out.println("Categoría: " + categoriaProyecto[1]);
+            System.out.println("Cantidad necesaria: " + cantidadNecesaria[1]);
+            System.out.println("Cantidad financiada: " + cantidadFinanciada[1]);
+            System.out.println("Fecha de inicio: " + fechaInicio[1]);
+            System.out.println("Fecha de fin: " + fechaFin[1]);
+            System.out.println("Recompensas: " + recompensa1[1] + ", " + recompensa2[1] + ", " + recompensa3[1]);
+            // BARRA DE PROGRESO PROYECTO 2
+            int porcentaje = (int) ((cantidadFinanciada[1] / cantidadNecesaria[1]) * 100);
+            graficoBarras(porcentaje);
+            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+        }
+        if (proyectosCreados[0] >= 3) {
+            System.out.println("\nProyecto 3:");
+            System.out.println("Nombre: " + nombreProyecto[2]);
+            System.out.println("Descripción: " + descripcionProyecto[2]);
+            System.out.println("Categoría: " + categoriaProyecto[2]);
+            System.out.println("Cantidad necesaria: " + cantidadNecesaria[2]);
+            System.out.println("Cantidad financiada: " + cantidadFinanciada[2]);
+            System.out.println("Fecha de inicio: " + fechaInicio[2]);
+            System.out.println("Fecha de fin: " + fechaFin[2]);
+            System.out.println("Recompensas: " + recompensa1[2] + ", " + recompensa2[2] + ", " + recompensa3[2]);
+            // BARRA DE PROGRESO PROYECTO 3
+            int porcentaje = (int) ((cantidadFinanciada[2] / cantidadNecesaria[2]) * 100);
+            graficoBarras(porcentaje);
+            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
+        }
+    }
 
-            System.out.println("Modificar proyecto: " + obtenerNombre(proyectoNum));
+    public static void modificarProyectos (int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                           String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                           String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3){
+        Scanner sc = new Scanner(System.in);
 
-            String nuevoNombre = obtenerEntrada("Nuevo nombre del proyecto (o deje en blanco para no cambiar): ");
-            if (!nuevoNombre.isEmpty()) {
-                actualizarNombre(proyectoNum, nuevoNombre);
-            }
+        System.out.println("\n1. Modificar proyecto 1 ");
+        System.out.println("2. Modificar proyecto 2 ");
+        System.out.println("3. Modificar proyecto 3 ");
+        System.out.println("4. Volver ");
 
-            String nuevaDescripcion = obtenerEntrada("Nueva Descripción del proyecto (o deje en blanco para no cambiar): ");
-            if (!nuevaDescripcion.isEmpty()) {
-                actualizarDescripcion(proyectoNum, nuevaDescripcion);
-            }
+        int numProyecto = sc.nextInt();
+        sc.nextLine();
 
-            String nuevaCategoria = obtenerEntrada("Nueva categoría del proyecto (o deje en blanco para no cambiar): ");
-            if (!nuevaCategoria.isEmpty()) {
-                actualizarCategoria(proyectoNum, nuevaCategoria);
-            }
-
-            String nuevaFechaInicio = obtenerEntrada("Nueva fecha de inicio (dd/mm/aaaa) (o deje en blanco para no cambiar): ");
-            if (!nuevaFechaInicio.isEmpty()) {
-                actualizarFechaInicio(proyectoNum, nuevaFechaInicio);
-            }
-
-            String nuevaFechaFin = obtenerEntrada("Nueva fecha de fin (dd/mm/aaaa) (o deje en blanco para no cambiar): ");
-            if (!nuevaFechaFin.isEmpty()) {
-                actualizarFechaFin(proyectoNum, nuevaFechaFin);
-            }
-
-            String nuevaRecompensa1 = obtenerEntrada("Nueva recompensa 1 (o deje en blanco para no cambiar): ");
-            if (!nuevaRecompensa1.isEmpty()) {
-                actualizarRecompensa(proyectoNum, 1, nuevaRecompensa1);
-            }
-
-            String nuevaRecompensa2 = obtenerEntrada("Nueva recompensa 2 (o deje en blanco para no cambiar): ");
-            if (!nuevaRecompensa2.isEmpty()) {
-                actualizarRecompensa(proyectoNum, 2, nuevaRecompensa2);
-            }
-
-            String nuevaRecompensa3 = obtenerEntrada("Nueva recompensa 3 (o deje en blanco para no cambiar): ");
-            if (!nuevaRecompensa3.isEmpty()) {
-                actualizarRecompensa(proyectoNum, 3, nuevaRecompensa3);
-            }
-
-            double nuevaCantidadNecesaria = obtenerDouble("Nueva cantidad necesaria (o 0 para no cambiar): ");
-            if (nuevaCantidadNecesaria > 0) {
-                actualizarCantidadNecesaria(proyectoNum, nuevaCantidadNecesaria);
-            }
-
-            double nuevaCantidadFinanciada = obtenerDouble("Nueva cantidad financiada (o 0 para no cambiar): ");
-            if (nuevaCantidadFinanciada > 0) {
-                actualizarCantidadFinanciada(proyectoNum, nuevaCantidadFinanciada);
-            }
-
-            System.out.println("Proyecto modificado con éxito.");
+        if (numProyecto == 4) {
+            return;
+        }
+        if (numProyecto < 1 || numProyecto > proyectosCreados[0]) {
+            System.out.println("Proyecto no válido.");
+            return;
         }
 
-        public static void guardarProyecto(String nombre, String descripcion, String categoria, String fechaInicio, String fechaFin,
-                                           String recompensa1, String recompensa2, String recompensa3, double cantidadNecesaria, double cantidadFinanciada) {
-            if (proyectosCreados == 0) {
-                nombreProyecto1 = nombre;
-                descripcionProyecto1 = descripcion;
-                categoriaProyecto1 = categoria;
-                fechaInicioProyecto1 = fechaInicio;
-                fechaFinProyecto1 = fechaFin;
-                recompensa1_1 = recompensa1;
-                recompensa2_1 = recompensa2;
-                recompensa3_1 = recompensa3;
-                cantidadNecesaria1 = cantidadNecesaria;
-                cantidadFinanciada1 = cantidadFinanciada;
-            } else if (proyectosCreados == 1) {
-                nombreProyecto2 = nombre;
-                descripcionProyecto2 = descripcion;
-                categoriaProyecto2 = categoria;
-                fechaInicioProyecto2 = fechaInicio;
-                fechaFinProyecto2 = fechaFin;
-                recompensa1_2 = recompensa1;
-                recompensa2_2 = recompensa2;
-                recompensa3_2 = recompensa3;
-                cantidadNecesaria2 = cantidadNecesaria;
-                cantidadFinanciada2 = cantidadFinanciada;
-            } else {
-                nombreProyecto3 = nombre;
-                descripcionProyecto3 = descripcion;
-                categoriaProyecto3 = categoria;
-                fechaInicioProyecto3 = fechaInicio;
-                fechaFinProyecto3 = fechaFin;
-                recompensa1_3 = recompensa1;
-                recompensa2_3 = recompensa2;
-                recompensa3_3 = recompensa3;
-                cantidadNecesaria3 = cantidadNecesaria;
-                cantidadFinanciada3 = cantidadFinanciada;
-            }
+        System.out.print("Introduce el nuevo nombre del proyecto: ");
+        String nuevoNombre = sc.nextLine();
+        System.out.print("Introduce la nueva descripción del proyecto: ");
+        String nuevaDescripcion = sc.nextLine();
+        System.out.print("Introduce la nueva categoría del proyecto: ");
+        String nuevaCategoria = sc.nextLine();
+        System.out.print("Introduce la nueva cantidad necesaria: ");
+        double nuevaCantidadNecesaria = sc.nextDouble();
+        sc.nextLine();
+        System.out.print("Introduce la nueva cantidad financiada: ");
+        double nuevaCantidadFinanciada = sc.nextDouble();
+        sc.nextLine();
+        System.out.print("Introduce la nueva fecha de inicio (formato DD/MM/AAAA): ");
+        String nuevaFechaInicio = sc.nextLine();
+        System.out.print("Introduce la nueva fecha de fin (formato DD/MM/AAAA): ");
+        String nuevaFechaFin = sc.nextLine();
+        System.out.println("Introduce las nuevas recompensas:");
+        System.out.print("Recompensa 1: ");
+        String nuevaRecompensa1 = sc.nextLine();
+        System.out.print("Recompensa 2: ");
+        String nuevaRecompensa2 = sc.nextLine();
+        System.out.print("Recompensa 3: ");
+        String nuevaRecompensa3 = sc.nextLine();
+
+        if (numProyecto == 1) {
+            nombreProyecto[0] = nuevoNombre;
+            descripcionProyecto[0] = nuevaDescripcion;
+            categoriaProyecto[0] = nuevaCategoria;
+            cantidadNecesaria[0] = nuevaCantidadNecesaria;
+            cantidadFinanciada[0] = nuevaCantidadFinanciada;
+            fechaInicio[0] = nuevaFechaInicio;
+            fechaFin[0] = nuevaFechaFin;
+            recompensa1[0] = nuevaRecompensa1;
+            recompensa2[0] = nuevaRecompensa2;
+            recompensa3[0] = nuevaRecompensa3;
+        } else if (numProyecto == 2) {
+            nombreProyecto[1] = nuevoNombre;
+            descripcionProyecto[1] = nuevaDescripcion;
+            categoriaProyecto[1] = nuevaCategoria;
+            cantidadNecesaria[1] = nuevaCantidadNecesaria;
+            cantidadFinanciada[1] = nuevaCantidadFinanciada;
+            fechaInicio[1] = nuevaFechaInicio;
+            fechaFin[1] = nuevaFechaFin;
+            recompensa1[1] = nuevaRecompensa1;
+            recompensa2[1] = nuevaRecompensa2;
+            recompensa3[1] = nuevaRecompensa3;
+        } else if (numProyecto == 3) {
+            nombreProyecto[2] = nuevoNombre;
+            descripcionProyecto[2] = nuevaDescripcion;
+            categoriaProyecto[2] = nuevaCategoria;
+            cantidadNecesaria[2] = nuevaCantidadNecesaria;
+            cantidadFinanciada[2] = nuevaCantidadFinanciada;
+            fechaInicio[2] = nuevaFechaInicio;
+            fechaFin[2] = nuevaFechaFin;
+            recompensa1[2] = nuevaRecompensa1;
+            recompensa2[2] = nuevaRecompensa2;
+            recompensa3[2] = nuevaRecompensa3;
         }
 
+        System.out.println("Proyecto modificado con éxito.");
+    }
+
+        /*
         public static void actualizarNombre(int proyectoNum, String nuevoNombre) {
             if (proyectoNum == 1) nombreProyecto1 = nuevoNombre;
             else if (proyectoNum == 2) nombreProyecto2 = nuevoNombre;
@@ -439,7 +403,7 @@ public class funciones {
             else if (proyectoNum == 2) cantidadFinanciada2 = nuevaCantidad;
             else cantidadFinanciada3 = nuevaCantidad;
         }
-
+        */
         public static String obtenerEntrada(String mensaje) {
             System.out.print(mensaje);
             return sc.nextLine();
