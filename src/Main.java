@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import static biblioteca.funciones.*;
-import static biblioteca.funcionesCorreo.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,17 +45,17 @@ public class Main {
         boolean[] bloqueados = {false, false, false};
 
         //Variables de proyectos: PROYECTO[0] -> PROYECTO 1 / PROYECTO[1] -> PROYECTO 2 / PROYECTO [2] -> PROYECTO 3
-        String [] nombreProyecto = {"","",""};
-        String [] descripcionProyecto = {"","",""};
-        String [] categoriaProyecto = {"","",""};
-        String [] fechaInicio = {"","",""};
-        String [] fechaFin = {"","",""};
-        double [] cantidadNecesaria = {0,0,0};
-        double [] cantidadFinanciada = {0,0,0};
-        String [] recompensa1 = {"","",""};
-        String [] recompensa2 = {"","",""};
-        String [] recompensa3 = {"","",""};
-        int [] proyectosCreados = {0};
+        String[] nombreProyecto = {"", "", ""};
+        String[] descripcionProyecto = {"", "", ""};
+        String[] categoriaProyecto = {"", "", ""};
+        String[] fechaInicio = {"", "", ""};
+        String[] fechaFin = {"", "", ""};
+        double[] cantidadNecesaria = {0, 0, 0};
+        double[] cantidadFinanciada = {0, 0, 0};
+        String[] recompensa1 = {"", "", ""};
+        String[] recompensa2 = {"", "", ""};
+        String[] recompensa3 = {"", "", ""};
+        int[] proyectosCreados = {0};
 
         //Variables de proyectos
         String nombreProyecto1 = "";
@@ -93,7 +92,6 @@ public class Main {
         String recompensa3_3 = "";
 
 
-
         // Control de acceso
         while (true) {
             System.out.println("\nIntroduce el usuario (o escribe 'salir' para terminar):");
@@ -124,19 +122,13 @@ public class Main {
                             int opcion = menuPrincipalGestor();
 
                             if (opcion == 1) {
-                                mostrarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto,
-                                        cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1,
-                                        recompensa2, recompensa3);
+                                mostrarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto, cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3);
 
                             } else if (opcion == 2) {
-                                crearProyecto(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto,
-                                        cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1,
-                                        recompensa2, recompensa3);
+                                crearProyecto(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto, cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3);
 
                             } else if (opcion == 3) {
-                                modificarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto,
-                                        cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1,
-                                        recompensa2, recompensa3);
+                                modificarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto, cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3);
 
                             } else if (opcion == 4) {
                                 int opcionConfiguracion = menuConfiguracion();
@@ -184,17 +176,7 @@ public class Main {
                         //verificacionCorreo();
 
                         // INICIO MENÚ INVERSOR 1
-                        menuInversor1(saldoDisponibleInversor1, referidosInversor1,
-                                invertidoEnProyecto1_1, invertidoEnProyecto2_1, invertidoEnProyecto3_1,
-                                cantidadFinanciada1_1, cantidadFinanciada2_1, cantidadFinanciada3_1,
-                                nombreProyecto1, nombreProyecto2, nombreProyecto3,
-                                categoriaProyecto1, categoriaProyecto2, categoriaProyecto3,
-                                cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3,
-                                cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3,
-                                descripcionProyecto1, descripcionProyecto2, descripcionProyecto3,
-                                recompensa1_1, recompensa1_2, recompensa1_3,
-                                recompensa2_1, recompensa2_2, recompensa2_3,
-                                recompensa3_1, recompensa3_2, recompensa3_3);
+                        menuInversor1(saldoDisponibleInversor1, referidosInversor1, invertidoEnProyecto1_1, invertidoEnProyecto2_1, invertidoEnProyecto3_1, cantidadFinanciada1_1, cantidadFinanciada2_1, cantidadFinanciada3_1, nombreProyecto1, nombreProyecto2, nombreProyecto3, categoriaProyecto1, categoriaProyecto2, categoriaProyecto3, cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3, cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3, descripcionProyecto1, descripcionProyecto2, descripcionProyecto3, recompensa1_1, recompensa1_2, recompensa1_3, recompensa2_1, recompensa2_2, recompensa2_3, recompensa3_1, recompensa3_2, recompensa3_3);
                         // FIN MENÚ INVERSOR 1
 
                         break;
@@ -224,17 +206,7 @@ public class Main {
                         //verificacionCorreo();
 
                         // INICIO MENÚ INVERSOR 2
-                        menuInversor2(saldoDisponibleInversor2, referidosInversor2,
-                                invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2,
-                                cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2,
-                                nombreProyecto1, nombreProyecto2, nombreProyecto3,
-                                categoriaProyecto1, categoriaProyecto2, categoriaProyecto3,
-                                cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3,
-                                cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3,
-                                descripcionProyecto1, descripcionProyecto2, descripcionProyecto3,
-                                recompensa1_1, recompensa1_2, recompensa1_3,
-                                recompensa2_1, recompensa2_2, recompensa2_3,
-                                recompensa3_1, recompensa3_2, recompensa3_3);
+                        menuInversor2(saldoDisponibleInversor2, referidosInversor2, invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2, cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2, nombreProyecto1, nombreProyecto2, nombreProyecto3, categoriaProyecto1, categoriaProyecto2, categoriaProyecto3, cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3, cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3, descripcionProyecto1, descripcionProyecto2, descripcionProyecto3, recompensa1_1, recompensa1_2, recompensa1_3, recompensa2_1, recompensa2_2, recompensa2_3, recompensa3_1, recompensa3_2, recompensa3_3);
                         // FIN MENÚ INVERSOR 2
 
                         break;
@@ -273,14 +245,10 @@ public class Main {
                                 else intentosInversor2 = 3;
 
                             } else if (opcion == 2) {
-                                mostrarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto,
-                                        cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1,
-                                        recompensa2, recompensa3);
+                                mostrarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto, cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3);
 
                             } else if (opcion == 3) {
-                                modificarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto,
-                                        cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1,
-                                        recompensa2, recompensa3);
+                                modificarProyectos(proyectosCreados, nombreProyecto, descripcionProyecto, categoriaProyecto, cantidadNecesaria, cantidadFinanciada, fechaInicio, fechaFin, recompensa1, recompensa2, recompensa3);
 
                             } else if (opcion == 4) {
                                 int opcionConfiguracion = menuConfiguracion();
