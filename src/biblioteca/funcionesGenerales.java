@@ -1,68 +1,8 @@
 package biblioteca;
-
 import java.util.Scanner;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
-public class funciones {
-
+public class funcionesGenerales {
     private static final Scanner sc = new Scanner(System.in);
-
-    public static void verificacionCorreo() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("VERIFICACIÓN. Revisa el código que hemos enviado a tu gmail.");
-        int codigoVerificacion = (int) (Math.random() * 8999 + 1000);
-
-        String destinatario = "isalexis.design@gmail.com";
-        String asunto = "Correo de verificación";
-        String cuerpo = "<h1>" + codigoVerificacion + "</h1>" + "<p>IMPORTANTE: <strong>NO COMPARTAS ESTE CÓDIGO</strong></p>";
-
-        enviarConGMail(destinatario, asunto, cuerpo);
-
-        for (int i = 3; i > 0; i--) {
-            System.out.println("Introduce el código de verificación:");
-            int codigoIntroducidoPorUsuario = sc.nextInt();
-
-            if (codigoIntroducidoPorUsuario == codigoVerificacion) {
-                System.out.println("Bienvenido al sistema.");
-                break;
-            } else {
-                System.out.println("\033[31mCódigo de verificación incorrecto.\033[0m");
-                System.out.println("Te quedan " + (i - 1) + " intentos.");
-            }
-        }
-    }
-
-    public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
-        final String remitente = "alexis.lopez.1506@fernando3martos.com";
-        final String clave = "gphj dsbt qryu ugvs";
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.clave", clave);
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.port", "587");
-        Session session = Session.getDefaultInstance(props);
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(remitente));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
-            message.setSubject(asunto);
-            message.setContent(cuerpo, "text/html; charset=utf-8");
-            Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", remitente, clave);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        } catch (Exception me) {
-            me.printStackTrace();
-        }
-    }
 
     public static int menuPrincipalAdmin() {
         System.out.println("\n\033[38;5;214m--- Menú Administrador ---\033[39m");
@@ -188,13 +128,28 @@ public class funciones {
         return nuevoNombre;
     }
 
-    public static String cambioPassword(String passwordActual) {
+    public static void cambioPassword(String [] passGestor, int posicionUsuario) {
+        System.out.println("Por seguridad, escribe tu contraseña actual:");
+        String passIntroducida = sc.nextLine().toLowerCase().trim();
+        if (passIntroducida.equals(passGestor[posicionUsuario])){
+            System.out.println("Ingrese la nueva contraseña");
+            String passNueva = sc.nextLine().toLowerCase().trim();
+            System.out.println("Has reestablecido su contraseña");
+            passGestor[posicionUsuario] = passNueva;
+        } else System.out.println("Contraseña incorrecta.");
+    }
 
-        System.out.println("Ingrese la nueva contraseña");
-        String passwordNueva = sc.nextLine().toLowerCase().trim();
-        System.out.println("Has reestablecido su contraseña");
-
-        return passwordNueva;
+    public static String cambioPasswordAdmin(String passAdmin) {
+        String nuevaPassAdmin = passAdmin;
+        System.out.println("Por seguridad, escribe tu contraseña actual:");
+        String passIntroducida = sc.nextLine().toLowerCase().trim();
+        if (passIntroducida.equals(passAdmin)){
+            System.out.println("Ingrese la nueva contraseña");
+            String passNueva = sc.nextLine().toLowerCase().trim();
+            System.out.println("Has reestablecido su contraseña");
+            nuevaPassAdmin = passNueva;
+        } else System.out.println("Contraseña incorrecta.");
+        return nuevaPassAdmin;
     }
 
     //GESTOR
@@ -211,12 +166,14 @@ public class funciones {
         return opcion;
     }
 
-    public static void crearProyecto(int[] proyectosCreados, String[] nombreProyecto, String[] descripcionProyecto, String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada, String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
+    public static void crearProyecto(int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                     String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                     String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
         if (proyectosCreados[0] >= 3) {
             System.out.println("No se pueden crear más proyectos.");
             return;
         }
-        if (proyectosCreados[0] == 0) {
+        if (proyectosCreados[0] == 0){
             nombreProyecto[0] = obtenerEntrada("Nombre del proyecto: ");
             descripcionProyecto[0] = obtenerEntrada("Descripción del proyecto: ");
             categoriaProyecto[0] = obtenerEntrada("Categoría del proyecto: ");
@@ -230,7 +187,8 @@ public class funciones {
 
             proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
-        } else if (proyectosCreados[0] == 1) {
+        }
+        else if (proyectosCreados[0] == 1){
             nombreProyecto[1] = obtenerEntrada("Nombre del proyecto: ");
             descripcionProyecto[1] = obtenerEntrada("Descripción del proyecto: ");
             categoriaProyecto[1] = obtenerEntrada("Categoría del proyecto: ");
@@ -244,7 +202,8 @@ public class funciones {
 
             proyectosCreados[0]++;
             System.out.println("Proyecto creado con éxito.");
-        } else if (proyectosCreados[0] == 2) {
+        }
+        else if (proyectosCreados[0] == 2){
             nombreProyecto[2] = obtenerEntrada("Nombre del proyecto: ");
             descripcionProyecto[2] = obtenerEntrada("Descripción del proyecto: ");
             categoriaProyecto[2] = obtenerEntrada("Categoría del proyecto: ");
@@ -261,7 +220,9 @@ public class funciones {
         }
     }
 
-    public static void mostrarProyectos(int[] proyectosCreados, String[] nombreProyecto, String[] descripcionProyecto, String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada, String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
+    public static void mostrarProyectos (int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                         String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                         String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3){
 
         System.out.println("\nMostrando todos los proyectos de la plataforma...");
         if (proyectosCreados[0] == 0) {
@@ -314,7 +275,9 @@ public class funciones {
         }
     }
 
-    public static void modificarProyectos(int[] proyectosCreados, String[] nombreProyecto, String[] descripcionProyecto, String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada, String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
+    public static void modificarProyectos (int [] proyectosCreados, String[]nombreProyecto, String[] descripcionProyecto,
+                                           String[] categoriaProyecto, double[] cantidadNecesaria, double[] cantidadFinanciada,
+                                           String[] fechaInicio, String[] fechaFin, String[] recompensa1, String[] recompensa2, String[] recompensa3){
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\n1. Modificar proyecto 1 ");
@@ -466,9 +429,23 @@ public class funciones {
     //GESTOR
 
     //FUNCIONES INVERSOR 1
-    public static void menuInversor1(double saldoDisponibleInversor1, String referidosInversor1, boolean invertidoEnProyecto1_1, boolean invertidoEnProyecto2_1, boolean invertidoEnProyecto3_1, double cantidadFinanciada1_1, double cantidadFinanciada2_1, double cantidadFinanciada3_1, String nombreProyecto1, String nombreProyecto2, String nombreProyecto3, String categoriaProyecto1, String categoriaProyecto2, String categoriaProyecto3, double cantidadNecesaria1, double cantidadNecesaria2, double cantidadNecesaria3, double cantidadFinanciada1, double cantidadFinanciada2, double cantidadFinanciada3, String descripcionProyecto1, String descripcionProyecto2, String descripcionProyecto3, String recompensa1_1, String recompensa1_2, String recompensa1_3, String recompensa2_1, String recompensa2_2, String recompensa2_3, String recompensa3_1, String recompensa3_2, String recompensa3_3) {
+    // Menú del inversor 1
+    public static void menuInversor1(double [] saldoDisponibleInversor, String referidosInversor1,
+                                     boolean[] invertidoEnProyecto,
+                                     double [] cantidadInvertidaEnProyecto,
+                                     String [] nombreProyecto,
+                                     String [] categoriaProyecto,
+                                     String [] fechaInicio, String[] fechaFin,
+                                     double [] cantidadNecesaria,
+                                     double [] cantidadFinanciada,
+                                     String [] descripcionProyecto,
+                                     String [] recompensa1,
+                                     String [] recompensa2,
+                                     String [] recompensa3,
+                                     String [] inversor,
+                                     int posicionUsuario){
         while (true) {
-            System.out.println("\n\033[32m--- Menú Inversor 1 ---\033[0m");
+            System.out.println("\n\033[32m--- Menú Inversor ---\033[0m");
             System.out.println("1. Mis inversiones");
             System.out.println("2. Proyectos Disponibles");
             System.out.println("3. Cartera digital");
@@ -480,13 +457,21 @@ public class funciones {
 
             switch (opcion) {
                 case 1:
-                    mostrarInversiones(new boolean[]{invertidoEnProyecto1_1, invertidoEnProyecto2_1, invertidoEnProyecto3_1}, new double[]{cantidadFinanciada1_1, cantidadFinanciada2_1, cantidadFinanciada3_1});
+                    mostrarInversiones(invertidoEnProyecto, cantidadInvertidaEnProyecto);
                     break;
                 case 2:
-                    menuProyectos(saldoDisponibleInversor1, new String[]{nombreProyecto1, nombreProyecto2, nombreProyecto3}, new String[]{categoriaProyecto1, categoriaProyecto2, categoriaProyecto3}, new double[]{cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3}, new double[]{cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3}, new String[]{descripcionProyecto1, descripcionProyecto2, descripcionProyecto3}, new String[][]{{recompensa1_1, recompensa1_2, recompensa1_3}, {recompensa2_1, recompensa2_2, recompensa2_3}, {recompensa3_1, recompensa3_2, recompensa3_3}});
+                    menuProyectos(saldoDisponibleInversor,
+                            nombreProyecto,
+                            categoriaProyecto,
+                            cantidadNecesaria,
+                            cantidadFinanciada,
+                            descripcionProyecto,
+                            recompensa1,
+                            recompensa2,
+                            recompensa3, invertidoEnProyecto, cantidadInvertidaEnProyecto, posicionUsuario);
                     break;
                 case 3:
-                    saldoDisponibleInversor1 = gestionarCartera(saldoDisponibleInversor1);
+                    gestionarCartera(saldoDisponibleInversor, posicionUsuario);
                     break;
                 case 4:
                     referidosInversor1 = gestionarReferidos(referidosInversor1);
@@ -517,18 +502,17 @@ public class funciones {
         }
     }
 
-    public static double gestionarCartera(double saldo) {
+    public static void gestionarCartera(double [] saldo, int posicionUsuario) {
         System.out.println("\n--- Cartera Digital ---");
-        System.out.println("Saldo disponible: " + saldo);
+        System.out.println("Saldo disponible: " + saldo[posicionUsuario]);
         System.out.print("¿Cuánto deseas añadir a tu saldo? ");
         double cantidad = sc.nextDouble();
         if (cantidad > 0) {
-            saldo += cantidad;
+            saldo[posicionUsuario] += cantidad;
             System.out.println("Saldo añadido con éxito.");
         } else {
             System.out.println("Cantidad inválida.");
         }
-        return saldo;
     }
 
     public static String gestionarReferidos(String referidos) {
@@ -569,7 +553,12 @@ public class funciones {
         }
     }
 
-    public static void menuProyectos(double saldo, String[] nombresProyectos, String[] categoriasProyectos, double[] necesario, double[] financiado, String[] descripciones, String[][] recompensas) {
+    // Menú de proyectos
+    public static void menuProyectos(double[] saldo, String[] nombresProyectos, String[] categoriasProyectos,
+                                     double[] necesario, double[] financiado, String[] descripciones,
+                                     String[] recompensa1, String[] recompensa2, String[] recompensa3,
+                                     boolean[] invertidoEnProyecto, double[] cantidadInvertidaEnProyecto,
+                                     int posicionUsuario){
         while (true) {
             System.out.println("\n--- Proyectos Disponibles ---");
             System.out.println("1. Listar proyectos");
@@ -584,10 +573,10 @@ public class funciones {
                     listarProyectos(nombresProyectos, categoriasProyectos, necesario, financiado);
                     break;
                 case 2:
-                    verDetallesProyecto(nombresProyectos, categoriasProyectos, descripciones, necesario, financiado, recompensas);
+                    verDetallesProyecto(nombresProyectos, categoriasProyectos, descripciones, necesario, financiado, recompensa1, recompensa2, recompensa3);
                     break;
                 case 3:
-                    saldo = invertirEnProyecto(saldo, necesario, financiado);
+                    invertirEnProyecto(saldo, necesario, financiado, invertidoEnProyecto, cantidadInvertidaEnProyecto, posicionUsuario);
                     break;
                 case 4:
                     return;
@@ -605,28 +594,35 @@ public class funciones {
         }
     }
 
-    private static void verDetallesProyecto(String[] nombres, String[] categorias, String[] descripciones, double[] necesario, double[] financiado, String[][] recompensas) {
+    private static void verDetallesProyecto(String[] nombres, String[] categorias, String[] descripciones,
+                                            double[] necesario, double[] financiado, String[]recompensa1, String[] recompensa2,String[] recompensa3) {
         System.out.print("\nSelecciona el número del proyecto (1-" + nombres.length + "): ");
         int proyecto = sc.nextInt() - 1;
         if (proyecto >= 0 && proyecto < nombres.length) {
-            mostrarDetallesProyecto(nombres[proyecto], categorias[proyecto], descripciones[proyecto], necesario[proyecto], financiado[proyecto], recompensas[proyecto]);
+            mostrarDetallesProyecto(nombres[proyecto], categorias[proyecto], descripciones[proyecto],
+                    necesario[proyecto], financiado[proyecto], recompensa1, recompensa2, recompensa3);
+            int porcentaje = (int) ((financiado[proyecto] / necesario[proyecto]) * 100);
+            graficoBarras(porcentaje);
+            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
         } else {
             System.out.println("Proyecto no encontrado.");
         }
     }
 
-    private static double invertirEnProyecto(double saldo, double[] necesario, double[] financiado) {
+    private static void invertirEnProyecto(double[] saldo, double[] necesario, double[] financiado, boolean[] invertidoEnProyecto, double[] cantidadInvertidaEnProyecto, int posicionUsuario) {
         System.out.print("\nSelecciona el número del proyecto para invertir (1-" + necesario.length + "): ");
         int proyecto = sc.nextInt() - 1;
         if (proyecto >= 0 && proyecto < necesario.length) {
             double cantidadRestante = necesario[proyecto] - financiado[proyecto];
             System.out.println("Cantidad restante para financiar: " + cantidadRestante);
-            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldo + "): ");
+            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldo[posicionUsuario] + "): ");
             double cantidadInvertir = sc.nextDouble();
 
-            if (cantidadInvertir > 0 && cantidadInvertir <= saldo && cantidadInvertir <= cantidadRestante) {
+            if (cantidadInvertir > 0 && cantidadInvertir <= saldo[posicionUsuario] && cantidadInvertir <= cantidadRestante) {
                 financiado[proyecto] += cantidadInvertir;
-                saldo -= cantidadInvertir;
+                invertidoEnProyecto[proyecto] = true;
+                cantidadInvertidaEnProyecto[proyecto] += cantidadInvertir;
+                saldo[posicionUsuario] -= cantidadInvertir;
                 System.out.println("Inversión realizada con éxito.");
             } else {
                 System.out.println("Cantidad inválida o insuficiente.");
@@ -634,10 +630,11 @@ public class funciones {
         } else {
             System.out.println("Proyecto no encontrado.");
         }
-        return saldo;
     }
 
-    private static void mostrarDetallesProyecto(String nombre, String categoria, String descripcion, double necesario, double financiado, String[] recompensas) {
+    // Metodo para mostrar detalles del proyecto
+    private static void mostrarDetallesProyecto(String nombre, String categoria, String descripcion,
+                                                double necesario, double financiado, String[] recompensa1, String[] recompensa2, String[] recompensa3) {
         System.out.println("\n--- Detalles del Proyecto ---");
         System.out.println("Nombre: " + nombre);
         System.out.println("Categoría: " + categoria);
@@ -646,180 +643,36 @@ public class funciones {
         System.out.println("Cantidad Financiada: " + financiado);
         System.out.println("Cantidad Restante: " + (necesario - financiado));
         System.out.println("*** RECOMPENSAS ***");
-        for (int i = 0; i < recompensas.length; i++) {
-            System.out.println("Recompensa " + (i + 1) + ": " + recompensas[i]);
+
+        if (!recompensa1[0].equals("")){
+            System.out.println("Recompensa 1: " + recompensa1[0]);
+            System.out.println("Recompensa 2: " + recompensa2[0]);
+            System.out.println("Recompensa 3: " + recompensa3[0]);
+
         }
+
     }
-    //FUNCIONES INVERSOR 1
 
-    //FUNCIONES INVERSOR 2
-    public static void menuInversor2(double saldoDisponibleInversor2, String referidosInversor2, boolean invertidoEnProyecto1_2, boolean invertidoEnProyecto2_2, boolean invertidoEnProyecto3_2, double cantidadFinanciada1_2, double cantidadFinanciada2_2, double cantidadFinanciada3_2, String nombreProyecto1, String nombreProyecto2, String nombreProyecto3, String categoriaProyecto1, String categoriaProyecto2, String categoriaProyecto3, double cantidadNecesaria1, double cantidadNecesaria2, double cantidadNecesaria3, double cantidadFinanciada1, double cantidadFinanciada2, double cantidadFinanciada3, String descripcionProyecto1, String descripcionProyecto2, String descripcionProyecto3, String recompensa1_1, String recompensa1_2, String recompensa1_3, String recompensa2_1, String recompensa2_2, String recompensa2_3, String recompensa3_1, String recompensa3_2, String recompensa3_3) {
-        while (true) {
-            System.out.println("\n\033[32m--- Menú Inversor 2 ---\033[0m");
-            System.out.println("1. Mis inversiones");
-            System.out.println("2. Proyectos Disponibles");
-            System.out.println("3. Cartera digital");
-            System.out.println("4. Referidos");
-            System.out.println("5. Configuración");
-            System.out.println("6. Cerrar sesión");
-            System.out.print("Selecciona una opción: ");
-            int opcion = sc.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    mostrarInversionesInversor2(invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2, cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2, nombreProyecto1, nombreProyecto2, nombreProyecto3);
-                    break;
-                case 2:
-                    menuProyectosInversor2(saldoDisponibleInversor2, new String[]{nombreProyecto1, nombreProyecto2, nombreProyecto3}, new String[]{categoriaProyecto1, categoriaProyecto2, categoriaProyecto3}, new double[]{cantidadNecesaria1, cantidadNecesaria2, cantidadNecesaria3}, new double[]{cantidadFinanciada1, cantidadFinanciada2, cantidadFinanciada3}, new String[]{descripcionProyecto1, descripcionProyecto2, descripcionProyecto3}, new String[][]{{recompensa1_1, recompensa1_2, recompensa1_3}, {recompensa2_1, recompensa2_2, recompensa2_3}, {recompensa3_1, recompensa3_2, recompensa3_3}}, new String[]{"fechaInicio1", "fechaInicio2", "fechaInicio3"}, new String[]{"fechaFin1", "fechaFin2", "fechaFin3"}, new boolean[]{invertidoEnProyecto1_2, invertidoEnProyecto2_2, invertidoEnProyecto3_2}, new double[]{cantidadFinanciada1_2, cantidadFinanciada2_2, cantidadFinanciada3_2});
-                    break;
-                case 3:
-                    saldoDisponibleInversor2 = gestionarCarteraInversor2(saldoDisponibleInversor2);
-                    break;
-                case 4:
-                    referidosInversor2 = gestionarReferidosInversor2(referidosInversor2);
-                    break;
-                case 5:
-                    configurarUsuarioInversor2("inversor2", "passInversor2");
-                    break;
-                case 6:
-                    System.out.println("Sesión cerrada.");
-                    return;
-                default:
-                    System.out.println("Opción inválida.");
+    // Metodo para comprobar si el String introducido en el inicio de sesión se encuentra en el array de usuarios correspondiente
+    public static boolean buscaStringEnArray (String usuarioIntroducido, String [] tipoDeUsuario){
+        boolean estaEnArray = false;
+        for (int i=0; i<tipoDeUsuario.length; i++){
+            if (usuarioIntroducido.equals(tipoDeUsuario[i])){
+                estaEnArray = true;
             }
         }
+        return estaEnArray;
     }
 
-    public static void mostrarInversionesInversor2(boolean invertidoEnProyecto1_2, boolean invertidoEnProyecto2_2, boolean invertidoEnProyecto3_2, double cantidadFinanciada1_2, double cantidadFinanciada2_2, double cantidadFinanciada3_2, String nombreProyecto1, String nombreProyecto2, String nombreProyecto3) {
-        System.out.println("\n--- Mis Inversiones ---");
-        if (invertidoEnProyecto1_2)
-            System.out.println("Inversión en " + nombreProyecto1 + " por " + cantidadFinanciada1_2);
-        if (invertidoEnProyecto2_2)
-            System.out.println("Inversión en " + nombreProyecto2 + " por " + cantidadFinanciada2_2);
-        if (invertidoEnProyecto3_2)
-            System.out.println("Inversión en " + nombreProyecto3 + " por " + cantidadFinanciada3_2);
-        if (!invertidoEnProyecto1_2 && !invertidoEnProyecto2_2 && !invertidoEnProyecto3_2) {
-            System.out.println("Aún no has realizado ninguna inversión.");
-        }
-    }
-
-    public static void menuProyectosInversor2(double saldoDisponibleInversor2, String[] nombresProyectos, String[] categoriasProyectos, double[] cantidadNecesaria, double[] cantidadFinanciada, String[] descripciones, String[][] recompensas, String[] fechasInicio, String[] fechasFin, boolean[] invertidoEnProyecto2, double[] cantidadFinanciada2) {
-        while (true) {
-            System.out.println("\n--- Proyectos Disponibles ---");
-            System.out.println("1. Listar proyectos");
-            System.out.println("2. Ver detalles de un proyecto");
-            System.out.println("3. Invertir en un proyecto");
-            System.out.println("4. Volver al menú principal");
-            System.out.print("Selecciona una opción: ");
-            int opcionProyectos = sc.nextInt();
-
-            switch (opcionProyectos) {
-                case 1:
-                    listarProyectos(nombresProyectos, categoriasProyectos, cantidadNecesaria, cantidadFinanciada);
-                    break;
-                case 2:
-                    verDetallesProyectoInversor2(nombresProyectos, categoriasProyectos, descripciones, cantidadNecesaria, cantidadFinanciada, recompensas, fechasInicio, fechasFin);
-                    break;
-                case 3:
-                    saldoDisponibleInversor2 = invertirEnProyectoInversor2(saldoDisponibleInversor2, cantidadNecesaria, cantidadFinanciada, invertidoEnProyecto2, cantidadFinanciada2);
-                    break;
-                case 4:
-                    return;
-                default:
-                    System.out.println("Opción inválida.");
+    public static int buscaPosicionUsuarioEnArray(String [] usuario, String usuarioIntroducido){
+        for (int i = 0; i < usuario.length; i++) {
+            if (usuario[i].equals(usuarioIntroducido)) {
+                return i; //
             }
         }
+        return -1;
     }
 
-    private static void verDetallesProyectoInversor2(String[] nombres, String[] categorias, String[] descripciones, double[] necesario, double[] financiado, String[][] recompensas, String[] fechasInicio, String[] fechasFin) {
-        System.out.print("\nSelecciona el número del proyecto (1-3): ");
-        int proyectoSeleccionado = sc.nextInt() - 1;
-        if (proyectoSeleccionado >= 0 && proyectoSeleccionado < nombres.length) {
-            System.out.println("\n--- Detalles del Proyecto ---");
-            System.out.println("Nombre: " + nombres[proyectoSeleccionado]);
-            System.out.println("Categoría: " + categorias[proyectoSeleccionado]);
-            System.out.println("Descripción: " + descripciones[proyectoSeleccionado]);
-            System.out.println("Cantidad Necesaria: " + necesario[proyectoSeleccionado]);
-            System.out.println("Cantidad Financiada: " + financiado[proyectoSeleccionado]);
-            System.out.println("Cantidad Restante: " + (necesario[proyectoSeleccionado] - financiado[proyectoSeleccionado]));
-            System.out.println("Fecha inicio de apertura para recibir inversiones: " + fechasInicio[proyectoSeleccionado]);
-            System.out.println("Fecha fin de cierre de las inversiones: " + fechasFin[proyectoSeleccionado]);
-            System.out.println("*** RECOMPENSAS ***");
-            for (int i = 0; i < recompensas[proyectoSeleccionado].length; i++) {
-                System.out.println("Recompensa " + (i + 1) + ": " + recompensas[proyectoSeleccionado][i]);
-            }
-            int porcentaje = (int) ((financiado[proyectoSeleccionado] / necesario[proyectoSeleccionado]) * 100);
-            graficoBarras(porcentaje);
-            System.out.println("\nEste proyecto ha recaudado el " + porcentaje + "%");
-            sc.nextLine();
-            sc.nextLine();
-        } else {
-            System.out.println("Proyecto no encontrado.");
-        }
-    }
 
-    private static double invertirEnProyectoInversor2(double saldoDisponibleInversor2, double[] cantidadNecesaria, double[] cantidadFinanciada, boolean[] invertidoEnProyecto2, double[] cantidadFinanciada2) {
-        System.out.print("\nSelecciona el número del proyecto para invertir (1-3): ");
 
-        int proyectoInvertir = sc.nextInt() - 1;
-        if (proyectoInvertir >= 0 && proyectoInvertir < cantidadNecesaria.length) {
-            double cantidadRestante = cantidadNecesaria[proyectoInvertir] - cantidadFinanciada[proyectoInvertir];
-
-            System.out.println("Cantidad restante para financiar: " + cantidadRestante);
-            System.out.print("¿Cuánto deseas invertir? (Saldo disponible: " + saldoDisponibleInversor2 + "): ");
-            double cantidadInvertir = sc.nextDouble();
-
-            if (cantidadInvertir > 0 && cantidadInvertir <= saldoDisponibleInversor2 && cantidadInvertir <= cantidadRestante) {
-                cantidadFinanciada[proyectoInvertir] += cantidadInvertir;
-                cantidadFinanciada2[proyectoInvertir] += cantidadInvertir;
-                invertidoEnProyecto2[proyectoInvertir] = true;
-                saldoDisponibleInversor2 -= cantidadInvertir;
-                System.out.println("Inversión realizada con éxito.");
-            } else {
-                System.out.println("Cantidad inválida.");
-            }
-        } else {
-            System.out.println("Proyecto no encontrado.");
-        }
-        return saldoDisponibleInversor2;
-    }
-
-    public static double gestionarCarteraInversor2(double saldoDisponibleInversor2) {
-        System.out.println("\n--- Cartera Digital ---");
-        System.out.println("Saldo disponible: " + saldoDisponibleInversor2);
-        System.out.print("¿Cuánto deseas añadir a tu saldo? ");
-        double cantidad = sc.nextDouble();
-        if (cantidad > 0) {
-            saldoDisponibleInversor2 += cantidad;
-            System.out.println("Saldo añadido con éxito.");
-        } else {
-            System.out.println("Cantidad inválida.");
-        }
-        return saldoDisponibleInversor2;
-    }
-
-    public static String gestionarReferidosInversor2(String referidosInversor2) {
-        System.out.println("\n--- Referidos ---");
-        System.out.println("Referidos actuales: " + (referidosInversor2.isEmpty() ? "Ninguno" : referidosInversor2));
-        System.out.print("Introduce el correo del nuevo referido: ");
-        sc.nextLine();
-        String nuevoReferido = sc.nextLine();
-        referidosInversor2 += (referidosInversor2.isEmpty() ? "" : ", ") + nuevoReferido;
-        System.out.println("Referido añadido con éxito.");
-        return referidosInversor2;
-    }
-
-    public static void configurarUsuarioInversor2(String inversor2, String passInversor2) {
-        int opcionConfiguracion = menuConfiguracion();
-        if (opcionConfiguracion == 1) {
-            inversor2 = cambioNombre(inversor2);
-        }
-        if (opcionConfiguracion == 2) {
-            passInversor2 = cambioPassword(passInversor2);
-        }
-        if (opcionConfiguracion == 3) {
-            System.out.println("Volviendo...");
-        }
-    }
-    //FUNCIONES INVERSOR 2
 }
