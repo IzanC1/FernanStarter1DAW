@@ -673,6 +673,22 @@ public class funcionesGenerales {
         return -1;
     }
 
+    public static int buscaPrimeraPosicionVacia (String[] usuario, String usuarioIntroducido){
+        for (int i = 0; i < usuario.length; i++) {
+            if (usuario[i].isEmpty()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Función para comprobar el estado y posiciones del array (sólo se utiliza de manera interna para hacer comprobaciones
+    public static void imprimeArray (String[] array){
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("Posición " + i + " : " + array[i] + ", ");
+        }
+    }
+
 
 
 }

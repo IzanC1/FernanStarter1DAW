@@ -1,9 +1,9 @@
 package utilidades;
 import java.util.Scanner;
+import static biblioteca.funcionesGenerales.*;
 
 public class funcionesCadenas {
-    private static String[] usuarios = new String[100];
-    private static String[] contrasenas = new String[100];
+
     private static int contadorUsuarios = 0;
     public static boolean contrasenaIguales (String password1, String password2){
         return password1.equals(password2);
@@ -32,7 +32,7 @@ public class funcionesCadenas {
     public static boolean esSimbolo (char c){
         return "-_.,*+@".indexOf(c) >= 0;
     }
-    public static void registroDeUsuario () {
+    public static void registroDeUsuario (String[] inversor, String [] gestor, String[] passInversor, String[] passGestor) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre de Usuario: ");
         String nuevoUsuario = sc.nextLine();
@@ -43,7 +43,6 @@ public class funcionesCadenas {
 
         if (!contrasenaIguales(nuevaPassword, repetirPassword)){
             System.out.println("Las contraseñas no son iguales");
-            return;
         }
 
         if (!esPasswordFuerte(nuevaPassword)){
@@ -53,44 +52,34 @@ public class funcionesCadenas {
         System.out.println("Tipo de usuario (Gestor o Inversor): ");
         String tipoUsuario = sc.nextLine();
 
-        if (!tipoUsuario.equals("Gestor") && !tipoUsuario.equals("Inversor")){
+        if (!tipoUsuario.equalsIgnoreCase("Gestor") && !tipoUsuario.equalsIgnoreCase("Inversor")){
             System.out.println("Solo los gestores y los inversores pueden crear una cuenta");
-            return;
         }
 
-        usuarios[contadorUsuarios] = nuevoUsuario;
-        contrasenas[contadorUsuarios] = nuevaPassword;
-        contadorUsuarios++;
-        System.out.println("Usuario registrado con exito");
-    }
 
-    public static void inicioSesion(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nombre de Usuario: ");
-        String nombreUsuario = sc.nextLine();
-
-        int usuarioIndex = -1;
-        for (int i = 0; i < contadorUsuarios; i++) {
-            if (usuarios[i].equals(nombreUsuario)){
-                usuarioIndex = i;
-                break;
+        if (tipoUsuario.equalsIgnoreCase("Gestor")){
+            boolean estaEnArray = buscaStringEnArray(nuevoUsuario, gestor);
+            if (estaEnArray){
+                System.out.println("ERROR. El usuario ya existe.");
+            } else {
+                int posicionGestor = buscaPrimeraPosicionVacia (gestor, nuevoUsuario);
+                gestor[posicionGestor] = nuevoUsuario;
+                passGestor[posicionGestor] = nuevaPassword;
+                System.out.println("Usuario registrado con exito");
+            }
+        } else if (tipoUsuario.equalsIgnoreCase("Inversor")){
+            boolean estaEnArray = buscaStringEnArray(nuevoUsuario, inversor);
+            if (estaEnArray){
+                System.out.println("ERROR. El usuario ya existe.");
+            } else {
+                int posicionInversor = buscaPrimeraPosicionVacia (inversor, nuevoUsuario);
+                inversor[posicionInversor] = nuevoUsuario;
+                passInversor[posicionInversor] = nuevaPassword;
+                System.out.println("Usuario registrado con exito");
             }
         }
-        if (usuarioIndex == -1){
-            System.out.println("Usuario no encontrado");
-            return;
-        }
 
-        System.out.println("Contraseña: ");
-        String password = sc.nextLine();
-
-        if (contrasenas[usuarioIndex].equals(password)){
-            System.out.println("Inicio de sesion exitoso. Bienvenido " + nombreUsuario);
-        } else {
-            System.out.println("Contraseña incorrecta");
-        }
     }
-
 
 
 }
