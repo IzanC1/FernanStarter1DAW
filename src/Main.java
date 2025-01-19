@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import static utilidades.funcionesCadenas.*;
 import static biblioteca.funcionesCorreo.*;
 import static biblioteca.funcionesGenerales.*;
 
@@ -50,8 +51,24 @@ public class Main {
         int [] proyectosCreados = {0};
 
 
+
         // Control de acceso
         while (true) {
+
+            System.out.println("\n------ Menú de Login ------");
+            System.out.println("1. Inicio de Sesión");
+            System.out.println("2. Registrarse");
+            System.out.println("Elige una opcion: ");
+            int opcionLogin = sc.nextInt();
+            sc.nextLine();
+            if (opcionLogin == 1){
+                inicioSesion();
+            } else if (opcionLogin == 2) {
+                registroDeUsuario();
+            } else {
+                System.out.println("Opcion no valida");
+            }
+
             System.out.println("\nIntroduce el usuario (o escribe 'salir' para terminar):");
             String usuarioIntroducido = sc.nextLine().toLowerCase().trim();
 
