@@ -1,4 +1,5 @@
 package biblioteca;
+
 import java.util.Scanner;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -7,7 +8,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class funcionesCorreo {
+public class FuncionesCorreo {
 
     private static final Scanner sc = new Scanner(System.in);
 
