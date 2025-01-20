@@ -4,13 +4,35 @@ import java.util.Scanner;
 
 import static biblioteca.Funciones.*;
 
+/**
+ * La clase <code>FuncionesComprobacionCadenas</code> proporciona una serie de funciones
+ * para validar contraseñas, comprobar la entrada de texto, validar fechas y gestionar
+ * el registro de usuario. Estas funciones son utilizadas para verificar la seguridad
+ * de la contraseña, asegurarse de que las fechas sean correctas, y permitir el
+ * registro de nuevos usuarios con verificación por correo.
+ */
 public class FuncionesComprobacionCadenas {
 
-    // Validación de contraseñas
+    /**
+     * Valida si la contraseña cumple con los requisitos de seguridad.
+     * La contraseña debe tener al menos 8 caracteres, contener al menos una letra
+     * mayúscula, una letra minúscula y un número.
+     *
+     * @param contrasenia La contraseña a validar.
+     * @return <code>true</code> si la contraseña es válida, <code>false</code> en caso contrario.
+     */
     public static boolean validarPassword(String contrasenia) {
         return contrasenia.length() >= 8 && contrasenia.matches(".*[A-Z].*") && contrasenia.matches(".*[a-z].*") && contrasenia.matches(".*[0-9].*");
     }
 
+    /**
+     * Verifica si la contraseña es fuerte.
+     * Una contraseña fuerte debe contener al menos una letra minúscula, una letra
+     * mayúscula, un número y un símbolo especial.
+     *
+     * @param password La contraseña a verificar.
+     * @return <code>true</code> si la contraseña es fuerte, <code>false</code> en caso contrario.
+     */
     public static boolean esPasswordFuerte(String password) {
         if (password.length() < 8) {
             return false;
@@ -31,11 +53,23 @@ public class FuncionesComprobacionCadenas {
         return tienemayuscula && tieneminuscula && tienenumero && tienesimbolo;
     }
 
+    /**
+     * Comprueba si un carácter es un símbolo permitido.
+     *
+     * @param c El carácter a comprobar.
+     * @return <code>true</code> si el carácter es un símbolo válido, <code>false</code> en caso contrario.
+     */
     public static boolean esSimbolo(char c) {
         return "-_.,*+@".indexOf(c) >= 0;
     }
 
-    // Entrada no vacía
+    /**
+     * Solicita una entrada al usuario y asegura que no esté vacía.
+     * El método repite la solicitud hasta que el usuario ingrese un valor no vacío.
+     *
+     * @param mensaje El mensaje que se muestra al usuario.
+     * @return El valor ingresado por el usuario, sin espacios iniciales o finales.
+     */
     public static String obtenerEntradaNoVacia(String mensaje) {
         String entrada;
         do {
@@ -47,7 +81,13 @@ public class FuncionesComprobacionCadenas {
         return entrada;
     }
 
-    // Validación de fechas
+    /**
+     * Valida el formato de una fecha en el formato "dd/mm/aaaa".
+     * La fecha debe tener el formato correcto y debe ser una fecha válida.
+     *
+     * @param fecha La fecha a validar.
+     * @return <code>true</code> si la fecha es válida, <code>false</code> en caso contrario.
+     */
     public static boolean validarFormatoFecha(String fecha) {
         if (!fecha.matches("\\d{2}/\\d{2}/\\d{4}")) {
             System.out.println("Formato de fecha incorrecto. Use dd/mm/aaaa");
@@ -66,6 +106,13 @@ public class FuncionesComprobacionCadenas {
         return true;
     }
 
+    /**
+     * Valida si la fecha de fin es posterior a la fecha de inicio.
+     *
+     * @param fechaInicio La fecha de inicio.
+     * @param fechaFin    La fecha de fin.
+     * @return <code>true</code> si la fecha de fin es posterior a la de inicio, <code>false</code> en caso contrario.
+     */
     public static boolean validarFechaFinPosterior(String fechaInicio, String fechaFin) {
         String[] partesInicio = fechaInicio.split("/");
         String[] partesFin = fechaFin.split("/");
@@ -85,12 +132,27 @@ public class FuncionesComprobacionCadenas {
         return true;
     }
 
-    // Comparación de contraseñas
+    /**
+     * Compara dos contraseñas para verificar si son iguales.
+     *
+     * @param password1 La primera contraseña.
+     * @param password2 La segunda contraseña.
+     * @return <code>true</code> si las contraseñas son iguales, <code>false</code> en caso contrario.
+     */
     public static boolean contrasenaIguales(String password1, String password2) {
         return password1.equals(password2);
     }
 
-    // Registro de usuario con verificación por correo
+    /**
+     * Registra un nuevo usuario, verificando la contraseña, el tipo de usuario y la existencia
+     * del nombre de usuario, y enviando un código de verificación por correo antes de completar
+     * el registro.
+     *
+     * @param inversor     Arreglo de usuarios tipo inversor.
+     * @param gestor       Arreglo de usuarios tipo gestor.
+     * @param passInversor Arreglo de contraseñas de inversores.
+     * @param passGestor   Arreglo de contraseñas de gestores.
+     */
     public static void registroDeUsuario(String[] inversor, String[] gestor, String[] passInversor, String[] passGestor) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nombre de Usuario: ");
