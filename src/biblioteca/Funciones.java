@@ -31,9 +31,15 @@ public class Funciones {
             opcionPanelControl = sc.nextInt();
             sc.nextLine();
 
-            bloquearDesbloquear(opcionPanelControl, bloqueados);
+            if (opcionPanelControl == 1 || opcionPanelControl == 2) {
+                bloquearDesbloquear(opcionPanelControl, bloqueados);
+            } else if (opcionPanelControl == 3) {
+                break;
+            } else {
+                System.out.println("Opción no válida. Por favor, selecciona una opción válida.");
+            }
 
-        } while (opcionPanelControl != 1 && opcionPanelControl != 2 && opcionPanelControl != 3);
+        } while (opcionPanelControl != 3);
     }
 
     public static void bloquearDesbloquear(int opcionPanelControl, boolean[] bloqueados) {

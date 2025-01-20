@@ -4,8 +4,6 @@ import static biblioteca.Funciones.*;
 import static biblioteca.FuncionesComprobacionCadenas.registroDeUsuario;
 
 public class Main {
-    private static final int MAX_INTENTOS = 3;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -25,6 +23,7 @@ public class Main {
         String referidosInversor = "";
 
         // Variables de los bloqueos
+        final int MAX_INTENTOS = 3;
         int[] intentos = {MAX_INTENTOS, MAX_INTENTOS, MAX_INTENTOS}; // [0]=gestor, [1]=inversor1, [2]=inversor2
 
         // POSICIÓN DE USUARIO EN LOS ARRAYS: Gestor -> 0 / Inversor1 -> 1 / Inversor2 -> 2
@@ -50,12 +49,20 @@ public class Main {
                 System.out.println("\n------ Menú de Login ------");
                 System.out.println("1. Inicio de Sesión");
                 System.out.println("2. Registrarse");
-                System.out.println("Elige una opcion: ");
+                System.out.println("3. Salir");
+                System.out.println("Elige una opción: ");
                 opcionLogin = sc.nextInt();
                 sc.nextLine();
-                if (opcionLogin == 2) registroDeUsuario(inversor, gestor, passInversor, passGestor);
-                else if (opcionLogin != 1) System.out.println("Opción inválida.");
-            } while (opcionLogin != 1 && opcionLogin != 2);
+                if (opcionLogin == 3) {
+                    System.out.println("Saliendo del programa...");
+                    return; // terminar el programa
+                }
+                if (opcionLogin == 2) {
+                    registroDeUsuario(inversor, gestor, passInversor, passGestor);
+                } else if (opcionLogin != 1) {
+                    System.out.println("Opción inválida.");
+                }
+            } while (opcionLogin != 1);
 
             System.out.println("\nIntroduce el usuario (o escribe 'salir' para terminar):");
             String usuarioIntroducido = sc.nextLine().toLowerCase().trim();
